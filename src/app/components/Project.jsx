@@ -5,11 +5,11 @@ import { ExternalLink, Github } from "lucide-react";
 export default function Projects() {
   const projects = [
     {
-      title: "Portfolio Website",
-      description: "A modern personal portfolio built with Next.js and Tailwind CSS.",
-      image: "/project1.png",
-      demoLink: "https://your-demo-link.com",
-      codeLink: "https://github.com/your-repo",
+      title: "SokoMtaani",
+      description: "A modern agricultural marketplace built with Next.js and Tailwind CSS.",
+      image: "/sokoMtaani.png",
+      demoLink: "https://sokomtaani.vercel.app/",
+      codeLink: "https://github.com/Griffinsshem/Sokomtaani",
     },
     {
       title: "E-commerce Store",
