@@ -6,7 +6,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
@@ -34,8 +33,8 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-30 bg-white/90 backdrop-blur-md shadow-sm">
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
+    <header className="fixed top-0 left-0 w-full z-30 bg-black/90 backdrop-blur-md shadow-md border-b border-gray-800">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
         <div className="flex-shrink-0">
           <img
@@ -47,23 +46,22 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-6 relative">
+          <ul className="flex items-center gap-8 relative">
             {navLinks.map((link) => (
               <li key={link.id} className="relative">
                 <a
                   href={`#${link.id}`}
-                  className={`nav-link flex items-center gap-2 text-base font-medium transition-all duration-300 ${activeSection === link.id
-                      ? "text-blue-600"
-                      : "text-gray-700 hover:text-blue-600"
+                  className={`flex items-center gap-2 text-base font-medium transition-all duration-300 ${activeSection === link.id
+                      ? "text-blue-400"
+                      : "text-gray-300 hover:text-blue-400"
                     }`}
-                  onClick={() => setIsOpen(false)}
                 >
                   {link.icon}
                   {link.label}
                 </a>
                 {/* Animated underline */}
                 <span
-                  className={`absolute bottom-[-4px] left-0 h-[2px] bg-blue-600 rounded-full transition-all duration-500 ease-out ${activeSection === link.id ? "w-full" : "w-0"
+                  className={`absolute bottom-[-4px] left-0 h-[2px] bg-blue-500 rounded-full transition-all duration-500 ease-out ${activeSection === link.id ? "w-full" : "w-0"
                     }`}
                 ></span>
               </li>
@@ -73,7 +71,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-gray-700 hover:text-blue-600"
+          className="md:hidden text-gray-300 hover:text-blue-400 transition"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
@@ -82,15 +80,15 @@ export default function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <nav className="md:hidden bg-white border-t border-gray-200">
+        <nav className="md:hidden bg-black border-t border-gray-800">
           <ul className="flex flex-col items-start gap-4 p-4">
             {navLinks.map((link) => (
               <li key={link.id} className="w-full">
                 <a
                   href={`#${link.id}`}
-                  className={`flex items-center gap-2 text-lg transition-all duration-200 ${activeSection === link.id
-                      ? "text-blue-600 font-semibold border-b-2 border-blue-600"
-                      : "text-gray-700 hover:text-blue-600"
+                  className={`flex items-center gap-2 text-lg font-medium transition-all duration-300 ${activeSection === link.id
+                      ? "text-blue-400 border-b-2 border-blue-500 pb-1"
+                      : "text-gray-300 hover:text-blue-400"
                     }`}
                   onClick={() => setIsOpen(false)}
                 >
