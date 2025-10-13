@@ -37,12 +37,9 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
         <div className="flex-shrink-0">
-          {/* <img
-            src="/devGriff.svg"
-            alt="Logo"
-            className="h-10 sm:h-12 md:h-14 lg:h-16 object-contain"
-          /> */}
-          <p>devGriffins</p>
+          <p className="text-white text-2xl font-bold tracking-wide hover:text-blue-500 transition-colors duration-300">
+            dev<span className="text-blue-500">Griffins</span>
+          </p>
         </div>
 
         {/* Desktop Navigation */}
