@@ -31,27 +31,31 @@ export default function HomeSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gray-50 pt-20"
+      className="min-h-screen flex items-center justify-center bg-black text-white pt-20 transition-colors duration-500"
     >
       <div className="max-w-5xl mx-auto text-center px-6">
-        <h3 className="text-lg md:text-xl font-medium text-gray-600 mb-2">
+        {/* Greeting */}
+        <h3 className="text-lg md:text-xl font-medium text-gray-300 mb-2">
           Hello Mate <span className="wave">👋</span>
         </h3>
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-          I&apos;m <span className="text-blue-600">Griffins Shem Ondeyo</span>
+        {/* Heading */}
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+          I&apos;m <span className="text-blue-500">Griffins Shem Ondeyo</span>
           <br /> a{" "}
-          <span className="text-blue-600 pr-1 typing-cursor">
+          <span className="text-blue-400 pr-1 typing-cursor">
             {displayText}
           </span>
         </h1>
 
-        <p className="mt-4 text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
+        {/* Description */}
+        <p className="mt-4 text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
           I&apos;m a fullstack web developer who loves creating modern,
           user-friendly applications. I help brands and individuals turn their
           ideas into high-quality digital products.
         </p>
 
+        {/* Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#contact"
@@ -61,7 +65,7 @@ export default function HomeSection() {
           </a>
           <a
             href="#projects"
-            className="px-6 py-3 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-100 transition"
+            className="px-6 py-3 border border-gray-500 text-gray-300 rounded-lg hover:bg-gray-800 hover:border-blue-500 hover:text-blue-400 transition"
           >
             View Projects
           </a>
