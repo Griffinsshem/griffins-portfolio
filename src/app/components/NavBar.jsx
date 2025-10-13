@@ -37,11 +37,12 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <img
+          {/* <img
             src="/devGriff.svg"
             alt="Logo"
             className="h-10 sm:h-12 md:h-14 lg:h-16 object-contain"
-          />
+          /> */}
+          <p>devGriffins</p>
         </div>
 
         {/* Desktop Navigation */}
@@ -52,8 +53,8 @@ export default function Navbar() {
                 <a
                   href={`#${link.id}`}
                   className={`flex items-center gap-2 text-base font-medium transition-all duration-300 ${activeSection === link.id
-                      ? "text-blue-400"
-                      : "text-gray-300 hover:text-blue-400"
+                    ? "text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   {link.icon}
@@ -87,8 +88,8 @@ export default function Navbar() {
                 <a
                   href={`#${link.id}`}
                   className={`flex items-center gap-2 text-lg font-medium transition-all duration-300 ${activeSection === link.id
-                      ? "text-blue-400 border-b-2 border-blue-500 pb-1"
-                      : "text-gray-300 hover:text-blue-400"
+                    ? "text-blue-400 border-b-2 border-blue-500 pb-1"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                   onClick={() => setIsOpen(false)}
                 >
