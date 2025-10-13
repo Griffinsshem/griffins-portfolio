@@ -10,42 +10,42 @@ export default function Projects() {
       image: "/sokoMtaani.png",
       demoLink: "https://sokomtaani.vercel.app/",
       codeLink: "https://github.com/Griffinsshem/Sokomtaani",
-    },
-    {
-      title: "E-commerce Store",
-      description: "Fullstack store with cart, payments, and product management.",
-      image: "/project2.png",
-      demoLink: "https://your-demo-link.com",
-      codeLink: "https://github.com/your-repo",
-    },
-    {
-      title: "Blog Platform",
-      description: "A clean blog platform with authentication and CMS integration.",
-      image: "/project3.png",
-      demoLink: "https://your-demo-link.com",
-      codeLink: "https://github.com/your-repo",
-    },
-    {
-      title: "Chat Application",
-      description: "Real-time chat app using WebSockets and Node.js backend.",
-      image: "/project4.png",
-      demoLink: "https://your-demo-link.com",
-      codeLink: "https://github.com/your-repo",
-    },
-    {
-      title: "Task Manager",
-      description: "Productivity tool for managing daily tasks and deadlines.",
-      image: "/project5.png",
-      demoLink: "https://your-demo-link.com",
-      codeLink: "https://github.com/your-repo",
-    },
-    {
-      title: "Weather App",
-      description: "Simple weather app with API integration and modern UI.",
-      image: "/project6.png",
-      demoLink: "https://your-demo-link.com",
-      codeLink: "https://github.com/your-repo",
-    },
+    }
+    // {
+    //   title: "E-commerce Store",
+    //   description: "Fullstack store with cart, payments, and product management.",
+    //   image: "/project2.png",
+    //   demoLink: "https://your-demo-link.com",
+    //   codeLink: "https://github.com/your-repo",
+    // },
+    // {
+    //   title: "Blog Platform",
+    //   description: "A clean blog platform with authentication and CMS integration.",
+    //   image: "/project3.png",
+    //   demoLink: "https://your-demo-link.com",
+    //   codeLink: "https://github.com/your-repo",
+    // },
+    // {
+    //   title: "Chat Application",
+    //   description: "Real-time chat app using WebSockets and Node.js backend.",
+    //   image: "/project4.png",
+    //   demoLink: "https://your-demo-link.com",
+    //   codeLink: "https://github.com/your-repo",
+    // },
+    // {
+    //   title: "Task Manager",
+    //   description: "Productivity tool for managing daily tasks and deadlines.",
+    //   image: "/project5.png",
+    //   demoLink: "https://your-demo-link.com",
+    //   codeLink: "https://github.com/your-repo",
+    // },
+    // {
+    //   title: "Weather App",
+    //   description: "Simple weather app with API integration and modern UI.",
+    //   image: "/project6.png",
+    //   demoLink: "https://your-demo-link.com",
+    //   codeLink: "https://github.com/your-repo",
+    // },
   ];
 
   return (

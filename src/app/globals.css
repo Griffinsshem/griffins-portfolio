@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #6b6868;
   --foreground: #171717;
 }
 
@@ -15,7 +15,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #797575;
   }
 }
 
@@ -32,4 +32,21 @@ h4,
 h5,
 h6 {
   font-family: var(--font-source-code-pro), monospace;
+}
+
+@keyframes smooth-blink {
+
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: #2563eb;
+  }
+}
+
+.typing-cursor {
+  border-right: 3px solid #2563eb;
+  animation: smooth-blink 1s infinite;
 }

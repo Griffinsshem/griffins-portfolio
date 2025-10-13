@@ -25,13 +25,13 @@ export default function Contact() {
           <div className="flex flex-col items-center bg-white shadow-lg rounded-2xl p-8 hover:shadow-xl transition">
             <Mail className="w-10 h-10 text-blue-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Email</h3>
-            <p className="text-gray-600">griffins@example.com</p>
+            <p className="text-gray-600">griffinsshem254@gmail.com</p>
           </div>
 
           <div className="flex flex-col items-center bg-white shadow-lg rounded-2xl p-8 hover:shadow-xl transition">
             <Phone className="w-10 h-10 text-blue-600 mb-4" />
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Phone</h3>
-            <p className="text-gray-600">+254 700 000 000</p>
+            <p className="text-gray-600">+254 794858804</p>
           </div>
 
           <div className="flex flex-col items-center bg-white shadow-lg rounded-2xl p-8 hover:shadow-xl transition">

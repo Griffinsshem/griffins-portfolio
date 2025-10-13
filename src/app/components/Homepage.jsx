@@ -1,21 +1,49 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function HomeSection() {
+  const roles = ["Frontend Developer", "Fullstack Developer"];
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = roles[currentRoleIndex];
+    let typingSpeed = isDeleting ? 50 : 100;
+
+    const handleTyping = () => {
+      if (!isDeleting && displayText.length < currentRole.length) {
+        setDisplayText(currentRole.slice(0, displayText.length + 1));
+      } else if (isDeleting && displayText.length > 0) {
+        setDisplayText(currentRole.slice(0, displayText.length - 1));
+      } else if (!isDeleting && displayText.length === currentRole.length) {
+        setTimeout(() => setIsDeleting(true), 1000);
+      } else if (isDeleting && displayText.length === 0) {
+        setIsDeleting(false);
+        setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+      }
+    };
+
+    const timeout = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roles, currentRoleIndex]);
+
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center bg-gray-50 pt-20"
     >
       <div className="max-w-5xl mx-auto text-center px-6">
-
         <h3 className="text-lg md:text-xl font-medium text-gray-600 mb-2">
           Hello Mate <span className="wave">👋</span>
         </h3>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-          I&apos;m <span className="text-blue-600">Griffins</span>
-          <br /> a Web Developer
+          I&apos;m <span className="text-blue-600">Griffins Shem Ondeyo</span>
+          <br /> a{" "}
+          <span className="text-blue-600 pr-1 typing-cursor">
+            {displayText}
+          </span>
         </h1>
 
         <p className="mt-4 text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
@@ -23,7 +51,6 @@ export default function HomeSection() {
           user-friendly applications. I help brands and individuals turn their
           ideas into high-quality digital products.
         </p>
-
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <a

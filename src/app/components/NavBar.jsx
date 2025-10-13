@@ -6,6 +6,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
+
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
@@ -46,19 +47,25 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-6 relative">
             {navLinks.map((link) => (
-              <li key={link.id}>
+              <li key={link.id} className="relative">
                 <a
                   href={`#${link.id}`}
-                  className={`flex items-center gap-2 text-base transition-all duration-200 hover:scale-110 ${activeSection === link.id
-                      ? "text-blue-600 font-semibold"
+                  className={`nav-link flex items-center gap-2 text-base font-medium transition-all duration-300 ${activeSection === link.id
+                      ? "text-blue-600"
                       : "text-gray-700 hover:text-blue-600"
                     }`}
+                  onClick={() => setIsOpen(false)}
                 >
                   {link.icon}
                   {link.label}
                 </a>
+                {/* Animated underline */}
+                <span
+                  className={`absolute bottom-[-4px] left-0 h-[2px] bg-blue-600 rounded-full transition-all duration-500 ease-out ${activeSection === link.id ? "w-full" : "w-0"
+                    }`}
+                ></span>
               </li>
             ))}
           </ul>
@@ -78,11 +85,11 @@ export default function Navbar() {
         <nav className="md:hidden bg-white border-t border-gray-200">
           <ul className="flex flex-col items-start gap-4 p-4">
             {navLinks.map((link) => (
-              <li key={link.id}>
+              <li key={link.id} className="w-full">
                 <a
                   href={`#${link.id}`}
-                  className={`flex items-center gap-2 text-lg transition-all duration-200 hover:scale-110 ${activeSection === link.id
-                      ? "text-blue-600 font-semibold"
+                  className={`flex items-center gap-2 text-lg transition-all duration-200 ${activeSection === link.id
+                      ? "text-blue-600 font-semibold border-b-2 border-blue-600"
                       : "text-gray-700 hover:text-blue-600"
                     }`}
                   onClick={() => setIsOpen(false)}
