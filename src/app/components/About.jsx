@@ -1,23 +1,16 @@
 "use client";
 import React from "react";
-import HtmlIcon from "@mui/icons-material/Html";
-import CssIcon from "@mui/icons-material/Css";
-import JavascriptIcon from "@mui/icons-material/Javascript";
-import ReactIcon from "@mui/icons-material/IntegrationInstructions";
-import NodeIcon from "@mui/icons-material/Memory";
-import PythonIcon from "@mui/icons-material/Python";
-import TailwindIcon from "@mui/icons-material/DesignServices";
-import FirebaseIcon from "@mui/icons-material/Whatshot";
+import { SiHtml5, SiCss3, SiJavascript, SiReact, SiNodedotjs, SiPython, SiTailwindcss, SiMui, SiFirebase } from "react-icons/si";
 
 const skills = [
-  { name: "HTML / CSS", icon: <HtmlIcon className="text-blue-500" /> },
-  { name: "JavaScript (ES6+)", icon: <JavascriptIcon className="text-yellow-400" /> },
-  { name: "React / Next.js", icon: <ReactIcon className="text-cyan-400" /> },
-  { name: "Node.js / Express", icon: <NodeIcon className="text-green-400" /> },
-  { name: "Python / Flask", icon: <PythonIcon className="text-blue-300" /> },
-  { name: "Tailwind CSS", icon: <TailwindIcon className="text-teal-400" /> },
-  { name: "Material UI", icon: <CssIcon className="text-teal-400" /> },
-  { name: "Firebase", icon: <FirebaseIcon className="text-orange-400" /> },
+  { name: "HTML / CSS", icon: <SiHtml5 className="text-orange-500 w-6 h-6" /> },
+  { name: "JavaScript (ES6+)", icon: <SiJavascript className="text-yellow-400 w-6 h-6" /> },
+  { name: "React / Next.js", icon: <SiReact className="text-cyan-400 w-6 h-6" /> },
+  { name: "Node.js / Express", icon: <SiNodedotjs className="text-green-400 w-6 h-6" /> },
+  { name: "Python / Flask", icon: <SiPython className="text-blue-400 w-6 h-6" /> },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400 w-6 h-6" /> },
+  { name: "Material UI", icon: <SiMui className="text-teal-300 w-6 h-6" /> },
+  { name: "Firebase", icon: <SiFirebase className="text-orange-400 w-6 h-6" /> },
 ];
 
 export default function About() {
