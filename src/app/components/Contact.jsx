@@ -63,7 +63,7 @@ export default function Contact() {
 
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button
         <div className="text-center mt-20">
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=griffinsshem254@gmail.com"
@@ -77,7 +77,7 @@ export default function Contact() {
             Send me an email
           </a>
 
-        </div>
+        </div> */}
       </div>
     </section>
   );
