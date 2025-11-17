@@ -74,15 +74,17 @@ export default function HomeSection() {
 
         {/* RIGHT SIDE — IMAGE */}
         <div className="w-full md:w-1/2 flex justify-center">
-          <img
-            src="/griffins.jpg"
-            alt="Profile"
-            className="w-64 md:w-80 lg:w-96 rounded-2xl shadow-lg object-cover"
-          />
+          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-lg">
+            <img
+              src="/griffins.jpg"
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
+
 
       </div>
     </section>
-
   );
 }
