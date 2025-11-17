@@ -28,14 +28,12 @@ export default function About() {
           </h2>
           <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
             I&apos;m <span className="font-semibold text-white">Griffins</span>, a
-            fullstack web developer passionate about building modern, scalable,
-            and user-friendly digital products. I love transforming ideas into
-            beautiful, functional applications that make a meaningful impact.
+            dedicated full-stack developer with a strong focus on building smooth, high-performance web applications. My journey into software development began with a curiosity for how digital systems work and quickly grew into a passion for creating solutions that are both functional and user-friendly.
+
+            I work primarily with React, JavaScript, Python, and Flask, allowing me to develop applications end-to-end—from clean, responsive interfaces to reliable backend APIs. I enjoy solving real problems, writing maintainable code, and continuously learning new technologies that elevate the quality of my work.
           </p>
           <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-            With a strong focus on clean code, responsive design, and seamless
-            user experiences, I aim to deliver solutions that not only look
-            great but also perform at the highest standards.
+            Beyond the code, I value good teamwork, clear communication, and the process of transforming ideas into products that bring real value to users. I’m always excited to collaborate on meaningful projects and contribute to engineering teams that prioritize growth, creativity, and impact.
           </p>
         </div>
 
