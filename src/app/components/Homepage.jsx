@@ -49,7 +49,7 @@ export default function HomeSection() {
         </h1>
 
         {/* Description */}
-        <p className="mt-4 text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
+        <p className="mt-4 text-white text-base md:text-lg max-w-2xl mx-auto">
           I&apos;m a fullstack web developer who loves creating modern,
           user-friendly applications. I help brands and individuals turn their
           ideas into high-quality digital products.
