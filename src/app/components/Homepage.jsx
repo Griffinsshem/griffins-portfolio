@@ -31,46 +31,58 @@ export default function HomeSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-black text-white pt-20 transition-colors duration-500"
+      className="min-h-screen flex items-center bg-black text-white pt-20 transition-colors duration-500"
     >
-      <div className="max-w-5xl mx-auto text-center px-6">
-        {/* Greeting */}
-        <h3 className="text-lg md:text-xl font-medium text-gray-300 mb-2">
-          Hello Mate <span className="wave">👋</span>
-        </h3>
+      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
 
-        {/* Heading */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-          I&apos;m <span className="text-blue-500">Griffins Shem Ondeyo</span>
-          <br /> a{" "}
-          <span className="text-blue-400 pr-1 typing-cursor">
-            {displayText}
-          </span>
-        </h1>
+        {/* LEFT SIDE — TEXT */}
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <h3 className="text-lg md:text-xl font-medium text-gray-300 mb-2">
+            Hello Mate <span className="wave">👋</span>
+          </h3>
 
-        {/* Description */}
-        <p className="mt-4 text-white text-base md:text-lg max-w-2xl mx-auto">
-          I&apos;m a fullstack web developer who loves creating modern,
-          user-friendly applications. I help brands and individuals turn their
-          ideas into high-quality digital products.
-        </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            I&apos;m <span className="text-blue-500">Griffins Shem Ondeyo</span>
+            <br /> a{" "}
+            <span className="text-blue-400 pr-1 typing-cursor">
+              {displayText}
+            </span>
+          </h1>
 
-        {/* Buttons */}
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#contact"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
-          >
-            Contact Me
-          </a>
-          <a
-            href="#projects"
-            className="px-6 py-3 border border-gray-500 text-gray-300 rounded-lg hover:bg-gray-800 hover:border-blue-500 hover:text-blue-400 transition"
-          >
-            View Projects
-          </a>
+          <p className="mt-4 text-white text-base md:text-lg max-w-2xl">
+            I&apos;m a fullstack web developer who loves creating modern,
+            user-friendly applications. I help brands and individuals turn their
+            ideas into high-quality digital products.
+          </p>
+
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
+            <a
+              href="#contact"
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+            >
+              Contact Me
+            </a>
+
+            <a
+              href="#projects"
+              className="px-6 py-3 border border-gray-500 text-gray-300 rounded-lg hover:bg-gray-800 hover:border-blue-500 hover:text-blue-400 transition"
+            >
+              View Projects
+            </a>
+          </div>
         </div>
+
+        {/* RIGHT SIDE — IMAGE */}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <img
+            src="/griffins.jpg"
+            alt="Profile"
+            className="w-64 md:w-80 lg:w-96 rounded-2xl shadow-lg object-cover"
+          />
+        </div>
+
       </div>
     </section>
+
   );
 }
