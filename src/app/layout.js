@@ -21,6 +21,8 @@ export const metadata = {
   description: "Web Developer Portfolio",
 };
 
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${sourceCodePro.variable} ${inter.variable}`}>
