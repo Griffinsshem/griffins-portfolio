@@ -35,10 +35,10 @@ export default function HomeSection() {
     >
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
 
-        {/* LEFT SIDE — TEXT */}
+
         <div className="w-full md:w-1/2 text-center md:text-left">
           <h3 className="text-lg md:text-xl font-medium text-gray-300 mb-2">
-            Hello Mate <span className="wave">👋</span>
+            Hello <span className="wave">👋</span>
           </h3>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
@@ -72,7 +72,7 @@ export default function HomeSection() {
           </div>
         </div>
 
-        {/* RIGHT SIDE — IMAGE */}
+
         <div className="w-full md:w-1/2 flex justify-center">
           <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-lg">
             <img
