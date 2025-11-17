@@ -50,9 +50,7 @@ export default function HomeSection() {
           </h1>
 
           <p className="mt-4 text-white text-base md:text-lg max-w-2xl">
-            I&apos;m a fullstack web developer who loves creating modern,
-            user-friendly applications. I help brands and individuals turn their
-            ideas into high-quality digital products.
+            I&apos;m a full-stack developer who loves crafting smooth, high-performance applications from end to end. Whether building responsive interfaces with React or designing robust APIs with Flask, I focus on writing clean code and delivering solutions that add value. I’m excited to collaborate with innovative teams and contribute to meaningful software projects.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-4 md:justify-start justify-center">
