@@ -31,7 +31,7 @@ export default function Footer() {
             <Github className="w-6 h-6" />
           </a>
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/in/shem-griffins-9111b1389/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500 transition-transform duration-300 hover:scale-110"
@@ -39,7 +39,7 @@ export default function Footer() {
             <Linkedin className="w-6 h-6" />
           </a>
           <a
-            href="https://twitter.com/"
+            href="https://x.com/GriffinShem1"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-500 transition-transform duration-300 hover:scale-110"
