@@ -42,7 +42,7 @@ export default function HomeSection() {
           </h3>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            I&apos;m <span className="text-blue-500">Griffins Ondeyo</span>
+            I&apos;m <span className="text-blue-500">Griffins</span>
             <br /> a{" "}
             <span className="text-blue-400 pr-1 typing-cursor">
               {displayText}
