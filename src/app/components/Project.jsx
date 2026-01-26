@@ -18,7 +18,7 @@ export default function Projects() {
         "Carbify is a modern e-commerce web application designed to deliver a seamless, all-in-one online shopping experience. Inspired by large-scale marketplaces like Amazon, Cartify connects buyers and sellers on a single platform.",
       image: "/cartify.png",
       demoLink: "https://caritfy.web.app/",
-      codeLink: "",
+      codeLink: "https://github.com/Griffinsshem/Cartify",
     },
     {
       title: "FlowState",
@@ -26,7 +26,7 @@ export default function Projects() {
         "A productivity app to manage tasks, set reminders, and track progress.",
       image: "/flowstate.png",
       demoLink: "https://cfg-i068.onrender.com/",
-      codeLink: "",
+      codeLink: "https://github.com/kaioken-glitch/CFG",
     },
   ];
 
