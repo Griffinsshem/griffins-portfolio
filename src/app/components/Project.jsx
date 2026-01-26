@@ -15,7 +15,7 @@ export default function Projects() {
     {
       title: "Cartify",
       description:
-        "Carbify is a modern e-commerce web application designed to deliver a seamless, all-in-one online shopping experience. Inspired by large-scale marketplaces like Amazon, Cartify connects buyers and sellers on a single platform.",
+        "Carbify is a modern e-commerce web application designed to deliver a seamless, all-in-one online shopping experience.",
       image: "/cartify.png",
       demoLink: "https://caritfy.web.app/",
       codeLink: "https://github.com/Griffinsshem/Cartify",
