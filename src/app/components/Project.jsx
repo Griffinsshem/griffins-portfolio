@@ -13,7 +13,7 @@ export default function Projects() {
       codeLink: "https://github.com/Griffinsshem/Sokomtaani",
     },
     {
-      title: "DevConnect",
+      title: "Cartify",
       description:
         "Carbify is a modern e-commerce web application designed to deliver a seamless, all-in-one online shopping experience. Inspired by large-scale marketplaces like Amazon, Cartify connects buyers and sellers on a single platform.",
       image: "/cartify.png",
