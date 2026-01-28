@@ -29,6 +29,7 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, [pathname]);
 
+
   const navLinks = [
     {
       label: "Home",
@@ -44,8 +45,7 @@ export default function Navbar() {
     {
       label: "Projects",
       icon: <Folder className="w-5 h-5" />,
-      href: "/#projects",
-      section: "projects",
+      href: "/projects",
     },
     {
       label: "Contact",
@@ -54,6 +54,7 @@ export default function Navbar() {
       section: "contact",
     },
   ];
+
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800">
