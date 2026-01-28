@@ -74,7 +74,7 @@ export default function HomeSection() {
               View Projects
             </a>
             <a
-              href="/#contact"
+              href="/contact"
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-7 py-3 text-sm font-medium text-gray-200 transition-all hover:bg-white/10 hover:scale-105"
             >
               Contact Me
