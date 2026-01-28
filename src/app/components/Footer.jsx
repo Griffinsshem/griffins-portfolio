@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Github, Linkedin, Twitter, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Twitter, ArrowUp, Mail } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -8,64 +8,106 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-gray-300 py-12 px-6 border-t border-zinc-800">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-        {/* Left Section */}
-        <div className="text-center md:text-left">
-          <h2 className="text-2xl font-bold text-white tracking-tight">
-            Griffins Portfolio
+    <footer className="relative border-t border-white/10 bg-black/80 backdrop-blur-xl px-6 py-16 text-gray-300">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-3">
+        {/* Brand / Identity */}
+        <div>
+          <h2 className="text-xl font-semibold tracking-tight text-white">
+            Griffins Shem
           </h2>
-          <p className="text-gray-400 mt-2 text-sm md:text-base">
-            Building modern, user-friendly digital experiences.
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-gray-400">
+            Frontend Developer specializing in modern React & Next.js
+            applications. Focused on performance, clean UI architecture, and
+            building products users love.
+          </p>
+
+          <p className="mt-4 text-sm text-gray-500">
+            Open to frontend & junior software roles.
           </p>
         </div>
 
-        {/* Social Links */}
-        <div className="flex justify-center gap-6">
-          <a
-            href="https://github.com/Griffinsshem"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-500 transition-transform duration-300 hover:scale-110"
-          >
-            <Github className="w-6 h-6" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/shem-griffins-9111b1389/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-500 transition-transform duration-300 hover:scale-110"
-          >
-            <Linkedin className="w-6 h-6" />
-          </a>
-          <a
-            href="https://x.com/GriffinShem1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-blue-500 transition-transform duration-300 hover:scale-110"
-          >
-            <Twitter className="w-6 h-6" />
-          </a>
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
+            Explore
+          </h3>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li>
+              <a href="/about" className="hover:text-white transition">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="/projects" className="hover:text-white transition">
+                Projects
+              </a>
+            </li>
+            <li>
+              <a href="/#contact" className="hover:text-white transition">
+                Contact
+              </a>
+            </li>
+          </ul>
         </div>
 
-        {/* Right Section */}
-        <div className="text-center md:text-right text-gray-400 text-sm md:text-base">
-          <p>© 2025 Griffins. All rights reserved.</p>
+        {/* Contact & Social */}
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400">
+            Connect
+          </h3>
+
+          <div className="mt-4 flex items-center gap-4">
+            <a
+              href="https://github.com/Griffinsshem"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 hover:text-white"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/shem-griffins-9111b1389/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 hover:text-white"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="https://x.com/GriffinShem1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 hover:text-white"
+            >
+              <Twitter className="h-5 w-5" />
+            </a>
+            <a
+              href="mailto:griffinsshem@gmail.com"
+              className="rounded-lg border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 hover:text-white"
+            >
+              <Mail className="h-5 w-5" />
+            </a>
+          </div>
+
+          <p className="mt-4 text-xs text-gray-500">
+            Prefer email? Reach out directly.
+          </p>
         </div>
       </div>
 
-      {/* Back to Top Button */}
-      <div className="mt-10 flex flex-col items-center">
+      {/* Bottom Bar */}
+      <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
+        <p className="text-xs text-gray-500">
+          © {new Date().getFullYear()} Griffins Shem. Built with Next.js & Tailwind CSS.
+        </p>
+
         <button
           onClick={scrollToTop}
-          className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white text-sm md:text-base rounded-lg shadow-md hover:bg-blue-700 hover:shadow-blue-600/30 transition-all duration-300"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-gray-200 transition hover:bg-white/10 hover:text-white"
         >
-          <ArrowUp className="w-5 h-5" />
-          <span>Back to top</span>
+          <ArrowUp className="h-4 w-4" />
+          Back to top
         </button>
-        <p className="text-xs md:text-sm text-gray-500 mt-3">
-          Click to return to the top of the page.
-        </p>
       </div>
     </footer>
   );
