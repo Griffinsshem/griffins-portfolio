@@ -82,7 +82,7 @@ export default function Footer() {
               <Twitter className="h-5 w-5" />
             </a>
             <a
-              href="mailto:griffinsshem@gmail.com"
+              href="mailto:griffinsshem254@gmail.com"
               className="rounded-lg border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 hover:text-white"
             >
               <Mail className="h-5 w-5" />
