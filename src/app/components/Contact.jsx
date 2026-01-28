@@ -1,83 +1,99 @@
 "use client";
 import React from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center bg-black text-white py-24 px-6"
+      className="min-h-screen bg-black text-white py-28 px-6 flex items-center"
     >
       <div className="max-w-6xl mx-auto w-full">
 
         {/* Heading */}
-        <div className="text-center space-y-4 mb-20">
+        <div className="text-center mb-20 space-y-6">
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            Let’s <span className="text-blue-500">Connect</span>
+            Ready to <span className="text-blue-500">Work Together?</span>
           </h2>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Whether you have a project, want to collaborate, or just want to say hello —
-            feel free to reach out anytime.
+
+          <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            I’m currently open to frontend and full-stack roles, freelance work,
+            and meaningful collaborations. If you’re building something impactful
+            and need a developer who cares about quality, performance, and user
+            experience — let’s talk.
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
 
-          {/* Email Card */}
+          {/* Email */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="backdrop-blur bg-zinc-900/60 border border-zinc-800 hover:border-blue-600 
-                       hover:shadow-blue-500/20 rounded-2xl p-10 shadow-xl transition-all duration-300
-                       flex flex-col items-center"
+            whileHover={{ y: -6 }}
+            className="group backdrop-blur bg-zinc-900/60 border border-zinc-800 
+                       hover:border-blue-500 rounded-2xl p-10 shadow-xl 
+                       transition-all duration-300"
           >
-            <Mail className="w-12 h-12 text-blue-500 mb-4" />
-            <h3 className="text-xl font-semibold">Email</h3>
-            <p className="text-gray-400 mt-1">griffinsshem254@gmail.com</p>
+            <Mail className="w-10 h-10 text-blue-500 mb-6" />
+            <h3 className="text-xl font-semibold mb-2">Email</h3>
+            <p className="text-gray-400 mb-4">
+              Best for opportunities, interviews, and collaborations
+            </p>
+            <span className="text-blue-400 font-medium break-all">
+              griffinsshem254@gmail.com
+            </span>
           </motion.div>
 
-          {/* Phone Card */}
+          {/* Phone */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="backdrop-blur bg-zinc-900/60 border border-zinc-800 hover:border-blue-600 
-                       hover:shadow-blue-500/20 rounded-2xl p-10 shadow-xl transition-all duration-300
-                       flex flex-col items-center"
+            whileHover={{ y: -6 }}
+            className="group backdrop-blur bg-zinc-900/60 border border-zinc-800 
+                       hover:border-blue-500 rounded-2xl p-10 shadow-xl 
+                       transition-all duration-300"
           >
-            <Phone className="w-12 h-12 text-blue-500 mb-4" />
-            <h3 className="text-xl font-semibold">Phone</h3>
-            <p className="text-gray-400 mt-1">+254 794 858 804</p>
+            <Phone className="w-10 h-10 text-blue-500 mb-6" />
+            <h3 className="text-xl font-semibold mb-2">Phone</h3>
+            <p className="text-gray-400 mb-4">
+              Quick discussions or follow-ups
+            </p>
+            <span className="text-blue-400 font-medium">
+              +254&nbsp;794&nbsp;858&nbsp;804
+            </span>
           </motion.div>
 
-          {/* Location Card */}
+          {/* Location */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="backdrop-blur bg-zinc-900/60 border border-zinc-800 hover:border-blue-600 
-                       hover:shadow-blue-500/20 rounded-2xl p-10 shadow-xl transition-all duration-300
-                       flex flex-col items-center"
+            whileHover={{ y: -6 }}
+            className="group backdrop-blur bg-zinc-900/60 border border-zinc-800 
+                       hover:border-blue-500 rounded-2xl p-10 shadow-xl 
+                       transition-all duration-300"
           >
-            <MapPin className="w-12 h-12 text-blue-500 mb-4" />
-            <h3 className="text-xl font-semibold">Location</h3>
-            <p className="text-gray-400 mt-1">Nairobi, Kenya</p>
+            <MapPin className="w-10 h-10 text-blue-500 mb-6" />
+            <h3 className="text-xl font-semibold mb-2">Location</h3>
+            <p className="text-gray-400 mb-4">
+              Open to remote & hybrid opportunities
+            </p>
+            <span className="text-blue-400 font-medium">
+              Nairobi, Kenya
+            </span>
           </motion.div>
 
         </div>
 
-        {/* CTA Button
-        <div className="text-center mt-20">
+        {/* CTA */}
+        <div className="text-center mt-24">
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=griffinsshem254@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 
-             px-8 py-4 text-lg rounded-xl font-medium shadow-md hover:shadow-blue-500/20 
-             transition-all duration-300"
+            href="mailto:griffinsshem254@gmail.com"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl 
+                       bg-blue-600 hover:bg-blue-700 text-lg font-semibold
+                       shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
           >
-            <Send className="w-5 h-5" />
-            Send me an email
+            Start a Conversation
+            <ArrowRight className="w-5 h-5" />
           </a>
+        </div>
 
-        </div> */}
       </div>
     </section>
   );
