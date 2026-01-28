@@ -82,17 +82,20 @@ export default function Contact() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-24">
-          <a
-            href="mailto:griffinsshem254@gmail.com"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl 
-                       bg-blue-600 hover:bg-blue-700 text-lg font-semibold
-                       shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
-          >
-            Start a Conversation
-            <ArrowRight className="w-5 h-5" />
-          </a>
-        </div>
+        <button
+          onClick={() =>
+            window.open(
+              "https://wa.me/254794858804?text=Hi%20Griffins,%20I%20came%20across%20your%20portfolio.",
+              "_blank"
+            )
+          }
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-xl 
+             bg-blue-600 hover:bg-blue-700 text-lg font-semibold
+             shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+        >
+          Start a Conversation
+          <ArrowRight className="w-5 h-5" />
+        </button>
 
       </div>
     </section>
