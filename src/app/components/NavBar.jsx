@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, User, Mail, Folder, Menu, X } from "lucide-react";
+import { Home, User, Mail, Folder, Menu, X, Code2 } from "lucide-react";
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,10 +60,15 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-lg font-semibold tracking-tight text-white transition hover:text-blue-400"
+          className="flex items-center gap-2 text-lg font-semibold tracking-tight 
+             text-white transition hover:text-blue-400"
         >
-          dev<span className="text-blue-500">Griffins</span>
+          <Code2 className="h-5 w-5 text-blue-500" />
+          <span>
+            dev<span className="text-blue-500">Griffins</span>
+          </span>
         </Link>
+
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
