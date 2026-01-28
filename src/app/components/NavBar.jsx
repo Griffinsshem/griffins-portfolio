@@ -48,7 +48,7 @@ export default function Navbar() {
     {
       label: "Contact",
       icon: <Mail className="w-4 h-4" />,
-      href: "/#contact",
+      href: "/contact",
       section: "contact",
     },
   ];
