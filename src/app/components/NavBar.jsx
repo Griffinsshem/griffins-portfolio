@@ -9,7 +9,6 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
 
-
   useEffect(() => {
     if (pathname !== "/") return;
 
@@ -29,46 +28,44 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, [pathname]);
 
-
   const navLinks = [
     {
       label: "Home",
-      icon: <Home className="w-5 h-5" />,
+      icon: <Home className="w-4 h-4" />,
       href: "/",
       section: "home",
     },
     {
       label: "About",
-      icon: <User className="w-5 h-5" />,
+      icon: <User className="w-4 h-4" />,
       href: "/about",
     },
     {
       label: "Projects",
-      icon: <Folder className="w-5 h-5" />,
+      icon: <Folder className="w-4 h-4" />,
       href: "/projects",
     },
     {
       label: "Contact",
-      icon: <Mail className="w-5 h-5" />,
+      icon: <Mail className="w-4 h-4" />,
       href: "/#contact",
       section: "contact",
     },
   ];
 
-
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800">
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link
           href="/"
-          className="text-2xl font-bold tracking-wide text-white hover:text-blue-400 transition"
+          className="text-lg font-semibold tracking-tight text-white transition hover:text-blue-400"
         >
           dev<span className="text-blue-500">Griffins</span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-10">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const isActive =
               pathname === link.href ||
@@ -78,18 +75,20 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`relative flex items-center gap-2 text-sm font-medium transition-all
+                className={`group relative flex items-center gap-2 text-sm font-medium transition-colors
                   ${isActive
                     ? "text-blue-400"
-                    : "text-gray-300 hover:text-blue-400"
+                    : "text-gray-300 hover:text-white"
                   }
                 `}
               >
                 {link.icon}
                 {link.label}
+
+                {/* Active indicator */}
                 <span
-                  className={`absolute -bottom-2 left-0 h-[2px] bg-blue-500 rounded-full transition-all duration-300
-                    ${isActive ? "w-full" : "w-0"}
+                  className={`pointer-events-none absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-blue-500 transition-all duration-300
+                    ${isActive ? "opacity-100" : "opacity-0"}
                   `}
                 />
               </Link>
@@ -99,26 +98,26 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-gray-300 hover:text-blue-400 transition"
           onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden rounded-lg border border-white/10 bg-white/5 p-2 text-gray-300 transition hover:bg-white/10 hover:text-white"
         >
-          {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Menu */}
       {isOpen && (
-        <nav className="md:hidden bg-black border-t border-gray-800">
-          <ul className="flex flex-col gap-4 px-6 py-6">
+        <nav className="md:hidden border-t border-white/10 bg-black/90 backdrop-blur-xl">
+          <ul className="flex flex-col gap-6 px-6 py-8">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`flex items-center gap-3 text-lg font-medium transition
+                  className={`flex items-center gap-3 text-base font-medium transition
                     ${pathname === link.href
                       ? "text-blue-400"
-                      : "text-gray-300 hover:text-blue-400"
+                      : "text-gray-300 hover:text-white"
                     }
                   `}
                 >
