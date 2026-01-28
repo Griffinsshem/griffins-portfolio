@@ -81,7 +81,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`group relative flex items-center gap-2 text-sm font-medium transition-colors
+                className={`group relative flex items-center gap-2 text-sm font-bold transition-colors
                   ${isActive
                     ? "text-blue-400"
                     : "text-gray-300 hover:text-white"
