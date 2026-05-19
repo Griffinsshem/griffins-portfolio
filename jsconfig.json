@@ -1,16 +1,7 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
