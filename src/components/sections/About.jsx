@@ -206,7 +206,7 @@ export default function AboutSection() {
                     />
 
                     {/* Content */}
-                    <div className="glass-card p-4">
+                    {/* <div className="glass-card p-4">
                       <div className="mb-1 flex items-center justify-between gap-2">
                         <h4 className="text-sm font-semibold text-white">{exp.role}</h4>
                         <span className="tag-pill shrink-0">{exp.type}</span>
@@ -217,7 +217,7 @@ export default function AboutSection() {
                       <p className="mt-2 text-xs leading-relaxed text-gray-500">
                         {exp.description}
                       </p>
-                    </div>
+                    </div> */}
                   </li>
                 ))}
               </ol>
