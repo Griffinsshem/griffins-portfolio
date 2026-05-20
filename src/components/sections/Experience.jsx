@@ -185,10 +185,10 @@ export default function ExperienceSection() {
           <h2 id="experience-heading" className="section-title">
             Work <span className="gradient-text">Experience</span>
           </h2>
-          <p className="mt-4 mx-auto max-w-lg text-sm text-gray-500">
+          {/* <p className="mt-4 mx-auto max-w-lg text-sm text-gray-500">
             {experiences.length} roles spanning {experiences[experiences.length - 1].period.split("–")[0].trim()}
             {" "}to present — from startup to scale-up.
-          </p>
+          </p> */}
         </motion.div>
 
         {/* ── Timeline ── */}

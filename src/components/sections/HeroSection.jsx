@@ -350,9 +350,9 @@ export default function HeroSection() {
             <span className="ml-3 text-xs text-gray-600" aria-hidden="true">
               /
             </span>
-            <span className="ml-3 text-xs text-gray-500">
+            {/* <span className="ml-3 text-xs text-gray-500">
               3+ years building for the web
-            </span>
+            </span> */}
           </motion.div>
         </motion.div>
 
