@@ -144,7 +144,7 @@ export default function SkillsSection() {
           <h2 id="skills-heading" className="section-title">
             Technical <span className="gradient-text">Skills</span>
           </h2>
-          <p className="mt-4 mx-auto max-w-lg text-sm text-gray-500">
+          <p className="mt-4 mx-auto max-w-lg text-sm text-gray-500 font-bold">
             A curated overview of my core stack and how deeply I've invested
             in each area.
           </p>

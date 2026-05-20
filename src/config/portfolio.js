@@ -51,7 +51,7 @@ export const skillCategories = [
       { name: "Flask", level: 68, icon: "🔥" },
       { name: "REST APIs", level: 85, icon: "🔗" },
       { name: "PostgreSQL", level: 65, icon: "🐘" },
-      { name: "MongoDB", level: 62, icon: "🍃" },
+      // { name: "MongoDB", level: 62, icon: "🍃" },
     ],
   },
   {
@@ -59,10 +59,10 @@ export const skillCategories = [
     label: "Tools & DevOps",
     skills: [
       { name: "Git", level: 88, icon: "🌿" },
-      { name: "Docker", level: 60, icon: "🐳" },
+      // { name: "Docker", level: 60, icon: "🐳" },
       { name: "Vercel", level: 90, icon: "▲" },
       { name: "Figma", level: 72, icon: "✏️" },
-      { name: "Jest", level: 65, icon: "🧪" },
+      // { name: "Jest", level: 65, icon: "🧪" },
       { name: "VS Code", level: 95, icon: "💻" },
     ],
   },
@@ -70,8 +70,8 @@ export const skillCategories = [
 
 export const techMarquee = [
   "React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js",
-  "Python", "Flask", "PostgreSQL", "MongoDB", "Docker",
-  "Vercel", "Git", "Figma", "Framer Motion", "REST APIs",
+  "Python", "Flask", "PostgreSQL", "MongoDB", /*"Docker",*/
+  "Vercel", "Git", "Figma", "Framer Motion", /*"REST APIs",*/
 ];
 
 export const projects = [

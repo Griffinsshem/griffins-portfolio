@@ -192,7 +192,7 @@ export default function ExperienceSection() {
         </motion.div>
 
         {/* ── Timeline ── */}
-        <div
+        {/* <div
           className="flex flex-col gap-0 md:gap-12"
           role="list"
           aria-label="Work experience timeline"
@@ -206,7 +206,7 @@ export default function ExperienceSection() {
               />
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
