@@ -76,19 +76,40 @@ export const techMarquee = [
 
 export const projects = [
   {
-    id: 1,
-    title: "E-Commerce Platform",
-    description:
-      "Full-stack e-commerce solution with real-time inventory, Stripe payments, and an admin dashboard. Achieved sub-2s load times on 3G.",
-    longDescription:
-      "Built with Next.js App Router, Prisma ORM, and PostgreSQL. Implements optimistic UI updates, server actions, and edge caching via Vercel.",
-    image: "/projects/ecommerce.png",
-    tags: ["Next.js", "Prisma", "PostgreSQL", "Stripe", "Tailwind"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/griffins/ecommerce",
-    featured: true,
-    metrics: { performance: "98", users: "2K+", uptime: "99.9%" },
+  id: 1,
+  title: "Carbify - Car Rental Platform",
+  description:
+    "Modern car rental web application with authentication, vehicle browsing, booking management, and responsive UI built using Next.js 16 and Firebase.",
+    
+  longDescription:
+    "Developed a full-stack inspired car rental platform using Next.js App Router, Firebase Authentication, and Tailwind CSS. Features include secure user authentication, protected booking flow, dynamic car detail pages, persistent booking management with local storage, responsive modern UI, and optimized deployment on Vercel. Implemented dynamic routing, query parameter handling, reusable components, and production-ready deployment workflows.",
+
+  image: "/projects/carbify.png",
+
+  tags: [
+    "Next.js 16",
+    "React 19",
+    "Firebase Auth",
+    "Tailwind CSS",
+    "Vercel",
+    "JavaScript",
+    "Responsive Design",
+  ],
+
+  liveUrl:
+    "https://carbify-lemon.vercel.app/",
+
+  githubUrl:
+    "https://github.com/Griffinsshem/Carbify",
+
+  featured: true,
+
+  metrics: {
+    performance: "95+",
+    pages: "9+",
+    uptime: "99.9%",
   },
+},
   {
     id: 2,
     title: "SaaS Dashboard",
