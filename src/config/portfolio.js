@@ -84,7 +84,7 @@ export const projects = [
   longDescription:
     "Developed a full-stack inspired car rental platform using Next.js App Router, Firebase Authentication, and Tailwind CSS. Features include secure user authentication, protected booking flow, dynamic car detail pages, persistent booking management with local storage, responsive modern UI, and optimized deployment on Vercel. Implemented dynamic routing, query parameter handling, reusable components, and production-ready deployment workflows.",
 
-  image: "/projects/carbify.png",
+  image: "/carbify.png",
 
   tags: [
     "Next.js 16",
