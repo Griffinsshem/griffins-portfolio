@@ -111,19 +111,38 @@ export const projects = [
   },
 },
   {
-    id: 2,
-    title: "SaaS Dashboard",
-    description:
-      "Analytics dashboard with real-time charts, role-based access control, and a white-label theming system for enterprise clients.",
-    longDescription:
-      "React + Recharts for data visualisation. JWT auth with refresh tokens. Multi-tenant architecture with schema-per-tenant PostgreSQL.",
-    image: "/projects/dashboard.png",
-    tags: ["React", "Node.js", "JWT", "Recharts", "MongoDB"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/griffins/saas-dashboard",
-    featured: true,
-    metrics: { performance: "95", users: "500+", uptime: "99.7%" },
-  },
+  id: 2,
+  title: "UrStyleKE E-Commerce Platform",
+  description:
+    "Full-stack e-commerce platform with JWT authentication, cart system, order management, and role-based admin product control deployed on Render and Vercel.",
+
+  longDescription:
+    "Built using Next.js (App Router) for the frontend and Flask (Python) backend with SQLAlchemy ORM. Implements secure JWT authentication with refresh tokens, protected checkout flow, and persistent cart management using localStorage. Features include order creation, payment simulation flow, product CRUD endpoints, and admin-only controls using is_admin flag migration. Backend deployed on Render with CORS configured for Vercel frontend.",
+
+  image: "/urstyleke.png",
+
+  tags: [
+    "Next.js",
+    "Flask",
+    "JWT",
+    "SQLAlchemy",
+    "PostgreSQL/SQLite",
+    "Flask-CORS",
+    "Render",
+    "Vercel"
+  ],
+
+  liveUrl: "https://urstyleke2.vercel.app/",
+  githubUrl: "https://github.com/Griffinsshem/urstyleke2",
+
+  featured: true,
+
+  metrics: {
+    performance: "Optimized API responses (<200ms average)",
+    users: "Authentication + checkout flow active users",
+    uptime: "99%+ Render deployment availability"
+  }
+},
   {
     id: 3,
     title: "Portfolio CMS",
