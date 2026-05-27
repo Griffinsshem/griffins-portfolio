@@ -12,6 +12,7 @@ import {
   Download,
   Sparkles,
 } from "lucide-react";
+import { personal, socialLinks as SOCIAL_LINKS_CONFIG } from "@/config/portfolio";
 
 const ROLES = [
   "Frontend Developer",
@@ -21,28 +22,18 @@ const ROLES = [
   "UI/UX Craftsman",
 ];
 
-const SOCIAL_LINKS = [
-  {
-    label: "GitHub",
-    href: "https://github.com/griffins",
-    icon: <Github size={18} />,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/griffins",
-    icon: <Linkedin size={18} />,
-  },
-  {
-    label: "Twitter",
-    href: "https://twitter.com/griffins",
-    icon: <Twitter size={18} />,
-  },
-  {
-    label: "Email",
-    href: "mailto:griffins@example.com",
-    icon: <Mail size={18} />,
-  },
-];
+const iconMap = {
+  Github: Github,
+  Linkedin: Linkedin,
+  Twitter: Twitter,
+  Mail: Mail,
+};
+
+// Convert socialLinks config to include actual icon components
+const SOCIAL_LINKS = SOCIAL_LINKS_CONFIG.map((link) => ({
+  ...link,
+  icon: iconMap[link.icon],
+}));
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -333,7 +324,7 @@ export default function HeroSection() {
             role="list"
             aria-label="Social links"
           >
-            {SOCIAL_LINKS.map(({ label, href, icon }) => (
+            {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
               <a
                 key={label}
                 href={href}
@@ -343,16 +334,16 @@ export default function HeroSection() {
                 aria-label={label}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-gray-400 backdrop-blur-sm transition-all duration-200 hover:border-indigo-500/50 hover:bg-indigo-500/10 hover:text-indigo-400 hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500"
               >
-                {icon}
+                <Icon size={18} />
               </a>
             ))}
 
             <span className="ml-3 text-xs text-gray-600" aria-hidden="true">
               /
             </span>
-            {/* <span className="ml-3 text-xs text-gray-500">
-              3+ years building for the web
-            </span> */}
+            <span className="ml-3 text-xs text-gray-500">
+              1+ years building for the web
+            </span>
           </motion.div>
         </motion.div>
 
