@@ -144,19 +144,21 @@ export const projects = [
   }
 },
   {
-    id: 3,
-    title: "Portfolio CMS",
-    description:
-      "Headless CMS-powered portfolio with MDX blog, dark mode, and automated OG image generation via Vercel Edge Functions.",
-    longDescription:
-      "Next.js + Contentlayer for type-safe MDX. Automated social card generation. 100 Lighthouse score across all categories.",
-    image: "/projects/portfolio.png",
-    tags: ["Next.js", "MDX", "Contentlayer", "Vercel"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/griffins/portfolio-cms",
-    featured: false,
-    metrics: { performance: "100", users: "Personal", uptime: "100%" },
-  },
+  "id": 3,
+  "title": "SokoMtaani",
+  "description": "Architected and led development of a full-stack peer-to-peer marketplace enabling direct buyer–seller transactions, reducing costs and eliminating intermediaries.",
+  "longDescription": "Designed and implemented SokoMtaani, a scalable peer-to-peer marketplace platform connecting buyers and sellers directly. Spearheaded full-stack development as Tech Lead, leveraging Next.js for the frontend and Flask for backend services. Integrated secure JWT-based authentication, RESTful API endpoints, and a relational database (SQLite) to ensure robust data management. Deployed frontend on Vercel and backend on Render, achieving 100% uptime and seamless cross-platform performance. Delivered a secure, cost-efficient solution that streamlined transactions and enhanced user trust.",
+  "image": "/sokoMtaani.png",
+  "tags": ["Next.js", "Flask", "Vercel", "SQLite", "JWT Authentication", "Render"],
+  "liveUrl": "https://sokomtaani.vercel.app/",
+  "githubUrl": "https://github.com/Griffinsshem/Sokomtaani",
+  "featured": true,
+  "metrics": {
+    "performance": "100",
+    "users": "Pilot Deployment",
+    "uptime": "100%"
+  }
+},
   {
     id: 4,
     title: "Task Management App",
