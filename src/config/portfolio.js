@@ -23,9 +23,9 @@ export const personal = {
 };
 
 export const socialLinks = [
-  { label: "GitHub", href: "https://github.com/griffins", icon: "Github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/griffins", icon: "Linkedin" },
-  { label: "Twitter", href: "https://twitter.com/griffins", icon: "Twitter" },
+  { label: "GitHub", href: "https://github.com/Griffinsshem", icon: "Github" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/shem-griffins-9111b1389/", icon: "Linkedin" },
+  { label: "Twitter", href: "https://x.com/GriffinsShem", icon: "Twitter" },
   { label: "Email", href: "mailto:griffinsshem254@gmail.com", icon: "Mail" },
 ];
 
@@ -71,7 +71,7 @@ export const skillCategories = [
 export const techMarquee = [
   "React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js",
   "Python", "Flask", "PostgreSQL", "MongoDB", /*"Docker",*/
-  "Vercel", "Git", "Figma", "Framer Motion", /*"REST APIs",*/
+  "Vercel", "Git", "Figma", "Framer Motion", "REST APIs",
 ];
 
 export const projects = [
@@ -159,20 +159,20 @@ export const projects = [
     "uptime": "100%"
   }
 },
-  {
-    id: 4,
-    title: "Task Management App",
-    description:
-      "Kanban-style project management tool with drag-and-drop, real-time collaboration via WebSockets, and offline support.",
-    longDescription:
-      "React DnD Kit for drag-and-drop. Socket.io for presence and live updates. IndexedDB for offline-first capability.",
-    image: "/projects/taskapp.png",
-    tags: ["React", "Socket.io", "DnD Kit", "IndexedDB"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/griffins/task-app",
-    featured: false,
-    metrics: { performance: "93", users: "300+", uptime: "99.5%" },
-  },
+  // {
+  //   id: 4,
+  //   title: "Task Management App",
+  //   description:
+  //     "Kanban-style project management tool with drag-and-drop, real-time collaboration via WebSockets, and offline support.",
+  //   longDescription:
+  //     "React DnD Kit for drag-and-drop. Socket.io for presence and live updates. IndexedDB for offline-first capability.",
+  //   image: "/projects/taskapp.png",
+  //   tags: ["React", "Socket.io", "DnD Kit", "IndexedDB"],
+  //   liveUrl: "https://example.com",
+  //   githubUrl: "https://github.com/griffins/task-app",
+  //   featured: false,
+  //   metrics: { performance: "93", users: "300+", uptime: "99.5%" },
+  // },
 ];
 
 
