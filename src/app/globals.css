@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
   color-scheme: light;
 
@@ -19,8 +21,6 @@
   --accent-hover: #a52c16;
   --accent-soft: rgb(192 54 29 / 0.10);
 
-  /* Translucent surface for the scrolled navigation. A token rather than
-     an inline color-mix so it stays in step with --surface in both modes. */
   --scrim: rgb(243 242 238 / 0.85);
 }
 
@@ -104,6 +104,9 @@
   --dur-ui: 260ms;
   --dur-reveal: 700ms;
 
+}
+
+@theme inline {
   --color-surface: var(--surface);
   --color-surface-raised: var(--surface-raised);
   --color-surface-invert: var(--surface-invert);
