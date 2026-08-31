@@ -304,7 +304,6 @@ The canonical URL lives in `site.url` in the content model and in `metadataBase`
 - `@types/node` and `@types/react` are in `devDependencies` but the project is JavaScript and has no `tsconfig.json`.
 - `carbify.png` and `urstyleke.png` are roughly 1MB and 770KB. Next serves optimised variants, but converting the sources to WebP would shrink the repository and the build.
 - The Open Graph image is the 600x600 portrait; social cards want 1200x630. `next/og` could generate one at build time.
-- The Technical University of Kenya entry has no dates and renders as "Dates not recorded".
 
 ---
 
