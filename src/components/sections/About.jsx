@@ -44,9 +44,9 @@ function StatCard({ stat, index }) {
       <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/10">
         <Icon size={18} className="text-indigo-400" aria-hidden="true" />
       </div>
-      <p className="text-3xl font-extrabold text-white">
+      {/* <p className="text-3xl font-extrabold text-white">
         <AnimatedCounter to={stat.value} suffix={stat.suffix} />
-      </p>
+      </p> */}
       <p className="text-xs text-gray-500">{stat.label}</p>
     </motion.div>
   );

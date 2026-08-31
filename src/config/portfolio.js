@@ -18,7 +18,7 @@ export const hero = {
   lead:
     "I am a frontend-focused developer in Nairobi building products with React, Next.js and Tailwind CSS, backed by Python and Flask services.",
 
-  cta: { label: "Selected work", href: "#work" },
+  cta: { label: "Selected work", href: "#projects" },
 };
 
 export const about = {
@@ -271,7 +271,7 @@ export const social = [
 ];
 
 export const navigation = [
-  { label: "Work", href: "#work" },
+  { label: "Work", href: "#projects" },
   { label: "About", href: "#about" },
   { label: "Stack", href: "#skills" },
   { label: "Experience", href: "#experience" },

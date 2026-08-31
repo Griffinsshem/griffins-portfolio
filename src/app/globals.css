@@ -18,6 +18,10 @@
   --accent: #c0361d;                
   --accent-hover: #a52c16;
   --accent-soft: rgb(192 54 29 / 0.10);
+
+  /* Translucent surface for the scrolled navigation. A token rather than
+     an inline color-mix so it stays in step with --surface in both modes. */
+  --scrim: rgb(243 242 238 / 0.85);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,6 +43,7 @@
     --accent: #ff5c3c;
     --accent-hover: #ff795e;
     --accent-soft: rgb(255 92 60 / 0.12);
+    --scrim: rgb(18 18 16 / 0.85);
   }
 }
 
@@ -56,6 +61,7 @@
   --accent: #c0361d;
   --accent-hover: #a52c16;
   --accent-soft: rgb(192 54 29 / 0.10);
+  --scrim: rgb(243 242 238 / 0.85);
 }
 
 [data-theme="dark"] {
@@ -72,6 +78,7 @@
   --accent: #ff5c3c;
   --accent-hover: #ff795e;
   --accent-soft: rgb(255 92 60 / 0.12);
+  --scrim: rgb(18 18 16 / 0.85);
 }
 
 :root {
@@ -109,6 +116,7 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
+  --color-scrim: var(--scrim);
 
   --font-display: var(--font-bricolage), "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;

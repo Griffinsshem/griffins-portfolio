@@ -1,252 +1,238 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "framer-motion";
+import { List, X } from "@phosphor-icons/react/dist/ssr";
+import { personal, navigation } from "@/config/portfolio";
+import { EASE, DUR } from "@/lib/motion";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
-const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
-];
+const SCROLL_THRESHOLD = 24;
 
-const drawerVariants = {
-  hidden: { opacity: 0, y: -16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.25, ease: "easeOut" },
-  },
-  exit: {
-    opacity: 0,
-    y: -16,
-    transition: { duration: 0.2, ease: "easeIn" },
-  },
-};
-
-const linkVariants = {
-  hidden: { opacity: 0, x: -12 },
-  visible: (i) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: i * 0.05, duration: 0.25, ease: "easeOut" },
-  }),
-};
-
+const SECTION_IDS = navigation.map((item) => item.href.replace("#", ""));
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef(null);
+  const reduce = useReducedMotion();
 
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const next = latest > SCROLL_THRESHOLD;
+    setScrolled((prev) => (prev === next ? prev : next));
+  });
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const sections = SECTION_IDS
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
-
   useEffect(() => {
-    const onKey = (e) => { if (e.key === "Escape") setMobileOpen(false); };
+    if (!menuOpen) return;
+
+    const onKey = (e) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, []);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
-
-  useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
-
-  useEffect(() => {
-    const sectionIds = NAV_LINKS.map((l) => l.href.slice(1)); // strip "#"
-    const observers = [];
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
-        { threshold: 0.4 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
-  const handleNavClick = useCallback((e, href) => {
-    e.preventDefault();
-    setMobileOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, []);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = previousOverflow;
+      menuButtonRef.current?.focus();
+    };
+  }, [menuOpen]);
 
   return (
-    <header
-      className={`
-        fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${isScrolled
-          ? "border-b border-white/[0.08] bg-[#0a0a0f]/80 backdrop-blur-xl shadow-lg shadow-black/20"
-          : "bg-transparent"
-        }
-      `}
-      role="banner"
-    >
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4"
-        aria-label="Main navigation"
-      >
-        {/* ── Logo ── */}
-        <a
-          href="#home"
-          onClick={(e) => handleNavClick(e, "#home")}
-          className="group flex items-center gap-2 focus-visible:outline-none"
-          aria-label="Griffins — back to top"
-        >
-          {/* Animated logo icon */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 shadow-lg shadow-indigo-500/30 transition-transform duration-300 group-hover:scale-110">
-            <Code2 size={16} className="text-white" aria-hidden="true" />
-          </div>
-          <span className="font-bold tracking-tight text-white">
-            griffins<span className="text-indigo-400">.dev</span>
-          </span>
-        </a>
+    <>
+      <header
 
-        {/* ── Desktop links ── */}
-        <ul
-          className="hidden items-center gap-1 md:flex"
-          role="list"
-          aria-label="Site sections"
+        className={`
+          fixed inset-x-0 top-0 z-40
+          transition-[background-color,border-color,backdrop-filter]
+          duration-[var(--dur-ui)] ease-[var(--ease-out)]
+          ${scrolled
+            ? "border-b border-line bg-scrim backdrop-blur-[10px]"
+            : "border-b border-transparent bg-transparent"}
+        `}
+      >
+        <nav
+          aria-label="Primary"
+          className={`
+            shell flex items-center justify-between
+            transition-[height] duration-[var(--dur-ui)] ease-[var(--ease-out)]
+            ${scrolled ? "h-[60px]" : "h-[72px]"}
+          `}
         >
-          {NAV_LINKS.map(({ label, href }) => {
-            const isActive = activeSection === href.slice(1);
-            return (
-              <li key={href}>
-                <a
-                  href={href}
-                  onClick={(e) => handleNavClick(e, href)}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`
-                    relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200
-                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500
-                    ${isActive
-                      ? "text-white"
-                      : "text-gray-400 hover:text-white hover:bg-white/5"
-                    }
-                  `}
-                >
-                  {label}
+          <a
+            href="#home"
+            className="
+              font-mono text-[13px] uppercase tracking-[0.18em] text-ink
+              transition-colors duration-200 ease-[var(--ease-out)] hover:text-accent
+            "
+          >
+            {personal.name}
+            <span className="sr-only"> {personal.fullName}, home</span>
+          </a>
+
+          {/* --- Links (desktop) ----------------------------------------- */}
+          <ul className="hidden items-center gap-8 md:flex">
+            {navigation.map((item) => {
+              const id = item.href.replace("#", "");
+              const isActive = active === id;
+
+              return (
+                <li key={item.href} className="relative">
+                  <a
+                    href={item.href}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`
+                      relative block py-1 text-[13.5px]
+                      transition-colors duration-200 ease-[var(--ease-out)]
+                      ${isActive ? "text-ink" : "text-muted hover:text-ink"}
+                    `}
+                  >
+                    {item.label}
+                  </a>
+
                   {isActive && (
                     <motion.span
-                      layoutId="nav-indicator"
-                      className="absolute inset-x-2 -bottom-0.5 h-[2px] rounded-full bg-indigo-400"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                      aria-hidden="true"
+                      layoutId={reduce ? undefined : "nav-active"}
+                      className="absolute -bottom-0.5 left-0 h-px w-full bg-accent"
+                      transition={{ duration: DUR.ui, ease: EASE.out }}
                     />
                   )}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
 
-        <a
-          href="#contact"
-          onClick={(e) => handleNavClick(e, "#contact")}
-          className="hidden md:inline-flex btn-primary text-sm px-5 py-2"
-          aria-label="Hire me"
-        >
-          Hire Me
-        </a>
+          <div className="flex items-center gap-1 md:gap-4">
+            {personal.available && (
+              <span className="status hidden lg:inline-flex">
+                <span className="status-dot" aria-hidden="true" />
+                {personal.availabilityLabel}
+              </span>
+            )}
 
-        <button
-          onClick={() => setMobileOpen((prev) => !prev)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-300 transition-colors hover:bg-white/10 md:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-drawer"
-        >
-          {mobileOpen
-            ? <X size={20} aria-hidden="true" />
-            : <Menu size={20} aria-hidden="true" />
-          }
-        </button>
-      </nav>
+            <ThemeToggle />
+
+            <button
+              ref={menuButtonRef}
+              type="button"
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              className="
+                grid h-11 w-11 place-items-center text-ink md:hidden
+                active:translate-y-px
+              "
+            >
+              <List size={20} weight="regular" />
+            </button>
+          </div>
+        </nav>
+      </header>
 
       <AnimatePresence>
-        {mobileOpen && (
+        {menuOpen && (
           <motion.div
-            id="mobile-drawer"
+            id="mobile-menu"
             role="dialog"
             aria-modal="true"
-            aria-label="Mobile navigation"
-            variants={drawerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="border-t border-white/[0.08] bg-[#0a0a0f]/95 backdrop-blur-xl md:hidden"
+            aria-label="Menu"
+            className="fixed inset-0 z-50 bg-surface md:hidden"
+            initial={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
+            transition={{ duration: DUR.ui, ease: EASE.out }}
           >
-            <ul
-              className="flex flex-col gap-1 px-6 py-4"
-              role="list"
-            >
-              {NAV_LINKS.map(({ label, href }, i) => {
-                const isActive = activeSection === href.slice(1);
-                return (
+            <div className="shell flex h-[72px] items-center justify-between">
+              <span className="font-mono text-[13px] uppercase tracking-[0.18em] text-ink">
+                {personal.name}
+              </span>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close menu"
+                autoFocus
+                className="grid h-11 w-11 place-items-center text-ink active:translate-y-px"
+              >
+                <X size={20} weight="regular" />
+              </button>
+            </div>
+
+            <nav aria-label="Mobile" className="shell mt-8">
+              <ul className="flex flex-col">
+                {navigation.map((item, i) => (
                   <motion.li
-                    key={href}
-                    custom={i}
-                    variants={linkVariants}
-                    initial="hidden"
-                    animate="visible"
+                    key={item.href}
+                    initial={reduce ? false : { opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.32,
+                      delay: reduce ? 0 : 0.04 + i * 0.045,
+                      ease: EASE.out,
+                    }}
+                    className="border-b border-line"
                   >
                     <a
-                      href={href}
-                      onClick={(e) => handleNavClick(e, href)}
-                      className={`
-                        flex items-center rounded-xl px-4 py-3 text-sm font-medium
-                        transition-colors duration-200
-                        ${isActive
-                          ? "bg-indigo-500/15 text-indigo-300"
-                          : "text-gray-400 hover:bg-white/5 hover:text-white"
-                        }
-                      `}
-                      aria-current={isActive ? "page" : undefined}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="
+                        block py-5 font-display text-[2rem] leading-none tracking-[-0.03em]
+                        text-ink transition-colors duration-200 ease-[var(--ease-out)]
+                        active:text-accent
+                      "
                     >
-                      {label}
+                      {item.label}
                     </a>
                   </motion.li>
-                );
-              })}
+                ))}
+              </ul>
 
-              <motion.li
-                custom={NAV_LINKS.length}
-                variants={linkVariants}
-                initial="hidden"
-                animate="visible"
-                className="mt-2"
-              >
-                <a
-                  href="#contact"
-                  onClick={(e) => handleNavClick(e, "#contact")}
-                  className="btn-primary w-full justify-center"
-                >
-                  Hire Me
+              <div className="mt-10 flex flex-col gap-4">
+                {personal.available && (
+                  <span className="status self-start">
+                    <span className="status-dot" aria-hidden="true" />
+                    {personal.availabilityLabel}
+                  </span>
+                )}
+                <a href={`mailto:${personal.email}`} className="link text-[15px] text-muted">
+                  {personal.email}
                 </a>
-              </motion.li>
-            </ul>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
