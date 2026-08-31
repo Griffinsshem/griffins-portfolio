@@ -40,10 +40,10 @@ export const revealLine = {
 };
 
 export const revealImage = {
-  hidden: { clipPath: "inset(0 0 100% 0)", opacity: 0.6 },
+  hidden: { opacity: 0, scale: 1.02 },
   visible: {
-    clipPath: "inset(0 0 0% 0)",
     opacity: 1,
+    scale: 1,
     transition: { duration: DUR.slow, ease: EASE.reveal },
   },
 };
