@@ -100,9 +100,9 @@ export default function Skills() {
             <div className="border-t border-line" />
           </motion.div>
 
-          <p className="meta mt-6 text-faint">
+          {/* <p className="meta mt-6 text-faint">
             Weighted by use, not by score. No percentages.
-          </p>
+          </p> */}
         </div>
       </div>
     </section>
