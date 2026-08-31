@@ -1,7 +1,15 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import {
+  ArrowUpRight,
+  GithubLogo,
+  LinkedinLogo,
+  XLogo,
+  FilePdf,
+} from "@phosphor-icons/react/dist/ssr";
+
+const LINK_ICONS = { github: GithubLogo, linkedin: LinkedinLogo, x: XLogo };
 import { personal, contact, social } from "@/config/portfolio";
 import { revealUp, stagger, viewportOnce } from "@/lib/motion";
 
@@ -49,7 +57,9 @@ export default function Contact() {
             <motion.ul variants={revealUp} className="mt-14 md:mt-20">
               {social
                 .filter((link) => link.id !== "email")
-                .map((link) => (
+                .map((link) => {
+                  const Icon = LINK_ICONS[link.id];
+                  return (
                   <li key={link.id} className="border-t border-line">
                     <a
                       href={link.href}
@@ -57,7 +67,8 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="group flex items-baseline justify-between gap-6 py-5 transition-colors duration-200 ease-[var(--ease-out)] hover:text-accent"
                     >
-                      <span className="font-display text-heading text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
+                      <span className="flex items-center gap-3 font-display text-heading text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
+                        {Icon ? <Icon size={18} weight="regular" aria-hidden="true" className="text-faint transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent" /> : null}
                         {link.label}
                       </span>
                       <span className="flex items-center gap-3">
@@ -71,7 +82,8 @@ export default function Contact() {
                       </span>
                     </a>
                   </li>
-                ))}
+                  );
+                })}
 
               <li className="border-t border-line">
                 <a
@@ -79,7 +91,8 @@ export default function Contact() {
                   download
                   className="group flex items-baseline justify-between gap-6 py-5 hover:text-accent"
                 >
-                  <span className="font-display text-heading text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
+                  <span className="flex items-center gap-3 font-display text-heading text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
+                    <FilePdf size={18} weight="regular" aria-hidden="true" className="text-faint transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent" />
                     Resume
                   </span>
                   <span className="meta">PDF</span>

@@ -271,9 +271,9 @@ export const social = [
 ];
 
 export const navigation = [
-  { label: "Work", href: "#projects" },
   { label: "About", href: "#about" },
   { label: "Stack", href: "#skills" },
+  { label: "Work", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
