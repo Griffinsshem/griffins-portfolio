@@ -290,7 +290,7 @@ The contract is: the script owns the initial value, the toggle owns changes, CSS
 Vercel builds from `main` on push. No environment variables are required; the site has no backend, no forms and no analytics.
 
 ```bash
-npm run build     # verify locally before pushing
+npm run build    
 git push
 ```
 
