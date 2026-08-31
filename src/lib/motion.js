@@ -72,26 +72,3 @@ export function reveal(reduce, variants = revealUp, delay = 0) {
     transition: { delay },
   };
 }
-
-export const fadeUp = revealUp;
-export const fadeIn = fade;
-export const scaleUp = {
-  hidden: { opacity: 0, scale: 0.96 },
-  visible: { opacity: 1, scale: 1, transition: { duration: DUR.ui, ease: EASE.out } },
-};
-export const slideInLeft = {
-  hidden: { opacity: 0, x: -32 },
-  visible: { opacity: 1, x: 0, transition: { duration: DUR.reveal, ease: EASE.reveal } },
-};
-export const slideInRight = {
-  hidden: { opacity: 0, x: 32 },
-  visible: { opacity: 1, x: 0, transition: { duration: DUR.reveal, ease: EASE.reveal } },
-};
-export const staggerContainer = stagger(0.08, 0.05);
-export const staggerContainerSlow = stagger(0.12, 0.1);
-export const cardHover = {
-  rest: { y: 0 },
-  hover: { y: -4, transition: { duration: DUR.hover, ease: EASE.out } },
-};
-export const buttonTap = { scale: 0.98 };
-export const viewport = viewportOnce;
