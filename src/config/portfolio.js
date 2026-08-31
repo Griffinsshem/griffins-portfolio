@@ -1,235 +1,341 @@
-
 export const personal = {
   name: "Griffins",
   fullName: "Griffins Ondeyo",
-  title: "Frontend & Full-Stack Developer",
-  email: "griffinsshem254@gmail.com",
+  role: "Frontend / Full-stack Developer",
   location: "Nairobi, Kenya",
+  email: "griffinsshem254@gmail.com",
+  resume: "/Griffins_Shem_Ondeyo_Resume.pdf",
+  portrait: "/griffins.jpg",
   available: true,
-  bio: [
-    "I'm a frontend-focused developer specialising in React, Next.js, and Tailwind CSS. I build clean, scalable interfaces with strong attention to performance, accessibility, and user experience.",
-    "I collaborate well across the stack using Node.js and Python (Flask), delivering production-ready features that feel polished and reliable.",
-  ],
-  roles: [
-    "Frontend Developer",
-    "Full-Stack Developer",
-    "React Specialist",
-    "Next.js Engineer",
-    "UI/UX Craftsman",
-  ],
-  yearsOfExperience: 1,
-  projectsCompleted: 20,
-  clientsSatisfied: 15,
+  availabilityLabel: "Available for work",
 };
 
-export const socialLinks = [
-  { label: "GitHub", href: "https://github.com/Griffinsshem", icon: "Github" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/shem-griffins-9111b1389/", icon: "Linkedin" },
-  { label: "Twitter", href: "https://x.com/GriffinsShem", icon: "Twitter" },
-  { label: "Email", href: "mailto:griffinsshem254@gmail.com", icon: "Mail" },
+export const hero = {
+  headline: [
+    "Interfaces that feel",
+    "as good as they work.",
+  ],
+  lead:
+    "I am a frontend-focused developer in Nairobi building products with React, Next.js and Tailwind CSS, backed by Python and Flask services.",
+
+  cta: { label: "Selected work", href: "#work" },
+};
+
+export const about = {
+  statement: "I care about the space between engineering and design.",
+
+  paragraphs: [
+    "Most of the decisions that make an interface feel good are not visible in a screenshot. They are the state you forgot to design, the focus ring you kept, the 200ms you took off a transition, the layout that holds at 320px. I build frontend first, then work backwards to the data the screen actually needs.",
+    "That means I am usually across the whole stack. I write the React and the Next.js routing, then the Flask endpoints and the schema underneath, because the shape of an API decides how much complexity leaks into the UI.",
+  ],
+
+  note:
+    "I started out installing networks in Kisumu and studied civil engineering before software. Both were jobs where the thing you built had to survive contact with the real world. I have not shaken the habit.",
+};
+
+export const index = [
+  { id: "01", label: "Focus", value: "Frontend" },
+  { id: "02", label: "Also", value: "Full-stack" },
+  { id: "03", label: "Primary stack", value: "React / Next.js" },
+  { id: "04", label: "Based in", value: "Nairobi, KE" },
 ];
 
-export const skillCategories = [
+export const stack = [
   {
     id: "frontend",
     label: "Frontend",
-    skills: [
-      { name: "React", level: 92, icon: "⚛️" },
-      { name: "Next.js", level: 90, icon: "▲" },
-      { name: "TypeScript", level: 78, icon: "🔷" },
-      { name: "Tailwind CSS", level: 95, icon: "🎨" },
-      { name: "Framer Motion", level: 80, icon: "🎞️" },
-      { name: "HTML/CSS", level: 97, icon: "🌐" },
+    items: [
+      { name: "React", primary: true },
+      { name: "Next.js", primary: true },
+      { name: "TypeScript" },
+      { name: "JavaScript", primary: true },
+      { name: "Tailwind CSS", primary: true },
+      { name: "Framer Motion" },
+      { name: "HTML5 / CSS3", primary: true },
+      { name: "Responsive design", primary: true },
     ],
   },
   {
     id: "backend",
     label: "Backend",
-    skills: [
-      { name: "Node.js", level: 75, icon: "🟢" },
-      { name: "Python", level: 70, icon: "🐍" },
-      { name: "Flask", level: 68, icon: "🔥" },
-      { name: "REST APIs", level: 85, icon: "🔗" },
-      { name: "PostgreSQL", level: 65, icon: "🐘" },
-      // { name: "MongoDB", level: 62, icon: "🍃" },
+    items: [
+      { name: "Python", primary: true },
+      { name: "Flask", primary: true },
+      { name: "Node.js" },
+      { name: "Express.js" },
+      { name: "REST APIs", primary: true },
+      { name: "JWT authentication", primary: true },
+      { name: "GraphQL" },
+      { name: "CORS" },
+    ],
+  },
+  {
+    id: "data",
+    label: "Data",
+    items: [
+      { name: "PostgreSQL", primary: true },
+      { name: "SQLite", primary: true },
+      { name: "MySQL" },
+      { name: "SQLAlchemy ORM", primary: true },
+      { name: "Firebase Auth" },
     ],
   },
   {
     id: "tools",
-    label: "Tools & DevOps",
-    skills: [
-      { name: "Git", level: 88, icon: "🌿" },
-      // { name: "Docker", level: 60, icon: "🐳" },
-      { name: "Vercel", level: 90, icon: "▲" },
-      { name: "Figma", level: 72, icon: "✏️" },
-      // { name: "Jest", level: 65, icon: "🧪" },
-      { name: "VS Code", level: 95, icon: "💻" },
+    label: "Tooling",
+    items: [
+      { name: "Git / GitHub", primary: true },
+      { name: "Vercel", primary: true },
+      { name: "Render", primary: true },
+      { name: "Docker" },
+      { name: "Linux / WSL", primary: true },
+      { name: "CI/CD" },
+      { name: "Figma" },
     ],
   },
-];
-
-export const techMarquee = [
-  "React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js",
-  "Python", "Flask", "PostgreSQL", "MongoDB", /*"Docker",*/
-  "Vercel", "Git", "Figma", "Framer Motion", "REST APIs",
 ];
 
 export const projects = [
   {
-  id: 1,
-  title: "Carbify - Car Rental Platform",
+    id: "sokomtaani",
+    index: "01",
+    title: "SokoMtaani",
+    tagline: "A peer-to-peer marketplace that puts buyers and sellers in direct contact.",
+    year: "2025",
+    role: "Tech lead, full-stack",
+    context: "Moringa School capstone",
+
+    problem:
+      "Neighbourhood trade in Kenya runs through informal groups and resellers, so buyers pay a margin to someone who never touches the product. The brief was to remove that layer without asking either side to trust a stranger blindly.",
+
+    build:
+      "Next.js frontend against a Flask API, with JWT authentication and refresh tokens guarding every write. Listings, sellers and orders sit in a relational schema through SQLAlchemy, so a seller's inventory and a buyer's order history stay consistent. I led the split between the two codebases and owned the auth flow, the REST contract and the deployment pipeline.",
+
+    outcome:
+      "Shipped and running: the frontend on Vercel, the API on Render, with CORS and environment configuration handled per environment. The product decisions I would revisit are the SQLite choice, which is right for a pilot and wrong for concurrent sellers, and the lack of an escrow step.",
+
+    tech: ["Next.js", "Flask", "SQLAlchemy", "SQLite", "JWT", "Vercel", "Render"],
+    image: "/sokoMtaani.png",
+    width: 1600,
+    height: 740,
+    live: "https://sokomtaani.vercel.app/",
+    source: "https://github.com/Griffinsshem/Sokomtaani",
+    layout: "full",
+  },
+
+  {
+    id: "urstyleke",
+    index: "02",
+    title: "UrStyleKE",
+    tagline: "A fashion storefront with a real checkout path and an admin behind it.",
+    year: "2025",
+    role: "Solo, full-stack",
+    context: "Personal project",
+
+    problem:
+      "Most portfolio e-commerce demos stop at a product grid. I wanted the parts that are actually hard: an authenticated cart that survives a refresh, an order that exists server-side, and a way to manage the catalogue without touching the database by hand.",
+
+    build:
+      "Next.js App Router frontend, Flask and SQLAlchemy backend. JWT with refresh tokens, a cart persisted to localStorage and reconciled on sign-in, order creation, a simulated payment step, and product CRUD gated behind an is_admin flag added by migration.",
+
+    outcome:
+      "Frontend on Vercel, API on Render with CORS scoped to the frontend origin. The payment step is deliberately a simulation rather than a live gateway, and is labelled as such in the UI.",
+
+    tech: ["Next.js", "Flask", "SQLAlchemy", "PostgreSQL", "JWT", "Render", "Vercel"],
+    image: "/urstyleke.png",
+    width: 1901,
+    height: 886,
+    live: "https://urstyleke2.vercel.app/",
+    source: "https://github.com/Griffinsshem/urstyleke2",
+    layout: "split",
+  },
+
+  {
+    id: "carbify",
+    index: "03",
+    title: "Carbify",
+    tagline: "Car rental booking, from browse to confirmed reservation.",
+    year: "2025",
+    role: "Solo, frontend-led",
+    context: "Personal project",
+
+    problem:
+      "Booking flows break at the seams: the route that loses your filters, the protected page that flashes before it redirects, the reservation that vanishes on refresh. This one was an exercise in getting those seams right.",
+
+    build:
+      "Next.js 16 App Router with dynamic vehicle routes and query-parameter filtering, Firebase Authentication guarding the booking path, and reservations persisted locally so a refresh mid-flow does not cost the user their selection. Components are shared across the browse, detail and booking screens rather than duplicated.",
+
+    outcome:
+      "Deployed on Vercel. Firebase handles identity, which kept the surface small and let the work stay where it mattered, in the routing and the interface.",
+
+    tech: ["Next.js 16", "React 19", "Firebase Auth", "Tailwind CSS", "Vercel"],
+    image: "/carbify.png",
+    width: 1901,
+    height: 877,
+    live: "https://carbify-lemon.vercel.app/",
+    source: "https://github.com/Griffinsshem/Carbify",
+    layout: "offset",
+  },
+];
+
+export const timeline = [
+  {
+    id: "independent",
+    period: "2025 - Present",
+    year: "2025",
+    role: "Frontend / Full-stack development",
+    org: "Independent projects",
+    place: "Nairobi, Kenya",
+    description:
+      "Designing and shipping full-stack web applications end to end: interface, API, schema and deployment. Carbify and UrStyleKE came out of this period.",
+    tags: ["Next.js", "React", "Flask", "PostgreSQL"],
+  },
+  {
+    id: "moringa",
+    period: "May 2025 - Oct 2025",
+    year: "2025",
+    role: "Certificate in Software Engineering",
+    org: "Moringa School",
+    place: "Nairobi, Kenya",
+    description:
+      "Full-time software engineering programme. Built SokoMtaani as the capstone, working as tech lead across the frontend and the Flask API. Certified November 2025.",
+    tags: ["JavaScript", "Python", "React", "Flask"],
+  },
+  {
+    id: "navid",
+    period: "Feb 2022 - May 2023",
+    year: "2022",
+    role: "Junior Site Monitor",
+    org: "Navid Construction Limited",
+    place: "Nairobi, Kenya",
+    description:
+      "Ran daily site operations: quality inspections, crew scheduling, equipment reporting and the documentation trail behind all of it. Safety compliance was not a checkbox, it was the job.",
+    tags: ["Quality control", "Coordination", "Reporting"],
+  },
+  {
+    id: "bambanet",
+    period: "Jan 2018 - Dec 2019",
+    year: "2018",
+    role: "Junior Network Technician",
+    org: "Bambanet",
+    place: "Kisumu, Kenya",
+    description:
+      "Network installation, configuration and maintenance, plus the customer support that comes with it. First job where I had to explain a technical fault to someone who only cared that it worked again.",
+    tags: ["Networking", "Support", "Troubleshooting"],
+  },
+  {
+    id: "tuk",
+    period: null,
+    year: null,
+    role: "Diploma in Civil Engineering",
+    org: "Technical University of Kenya",
+    place: "Nairobi, Kenya",
+    description:
+      "Structural thinking, tolerances, and the habit of designing for the load you will actually get rather than the one you hope for.",
+    tags: [],
+  },
+];
+
+export const contact = {
+  statement: "Have something worth building?",
+  lead:
+    "Open to frontend and full-stack roles, remote or in Nairobi, and to freelance work with a clear brief.",
+  cta: "Let's talk",
+};
+
+export const social = [
+  {
+    id: "github",
+    label: "GitHub",
+    handle: "Griffinsshem",
+    href: "https://github.com/Griffinsshem",
+  },
+  {
+    id: "linkedin",
+    label: "LinkedIn",
+    handle: "shem-griffins",
+    href: "https://www.linkedin.com/in/shem-griffins-9111b1389/",
+  },
+  {
+    id: "x",
+    label: "X",
+    handle: "@GriffinsShem",
+    href: "https://x.com/GriffinsShem",
+  },
+  {
+    id: "email",
+    label: "Email",
+    handle: personal.email,
+    href: `mailto:${personal.email}`,
+  },
+];
+
+export const navigation = [
+  { label: "Work", href: "#work" },
+  { label: "About", href: "#about" },
+  { label: "Stack", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const site = {
+  url: "https://griffins-portfolio.vercel.app",
+  title: `${personal.fullName} - ${personal.role}`,
   description:
-    "Modern car rental web application with authentication, vehicle browsing, booking management, and responsive UI built using Next.js 16 and Firebase.",
-    
-  longDescription:
-    "Developed a full-stack inspired car rental platform using Next.js App Router, Firebase Authentication, and Tailwind CSS. Features include secure user authentication, protected booking flow, dynamic car detail pages, persistent booking management with local storage, responsive modern UI, and optimized deployment on Vercel. Implemented dynamic routing, query parameter handling, reusable components, and production-ready deployment workflows.",
+    "Griffins Ondeyo is a frontend-focused developer in Nairobi, Kenya, building interfaces with React, Next.js and Tailwind CSS, backed by Python and Flask services.",
+  footerLine: "Built in Nairobi. Deployed on a Friday, like everything else.",
+};
 
-  image: "/carbify.png",
+personal.bio = about.paragraphs;
+personal.title = personal.role;
+personal.yearsOfExperience = null;
 
-  tags: [
-    "Next.js 16",
-    "React 19",
-    "Firebase Auth",
-    "Tailwind CSS",
-    "Vercel",
-    "JavaScript",
-    "Responsive Design",
-  ],
+const LEGACY_ICON_KEYS = {
+  github: "Github",
+  linkedin: "Linkedin",
+  x: "Twitter",
+  email: "Mail",
+};
 
-  liveUrl:
-    "https://carbify-lemon.vercel.app/",
+export const socialLinks = social.map((s) => ({
+  label: s.label,
+  href: s.href,
+  icon: LEGACY_ICON_KEYS[s.id],
+}));
 
-  githubUrl:
-    "https://github.com/Griffinsshem/Carbify",
+export const skillCategories = stack.map((group) => ({
+  id: group.id,
+  label: group.label,
+  skills: group.items.map((item) => ({ name: item.name, level: null, icon: null })),
+}));
 
-  featured: true,
+export const techMarquee = stack.flatMap((group) =>
+  group.items.filter((item) => item.primary).map((item) => item.name)
+);
 
-  metrics: {
-    performance: "95+",
-    pages: "9+",
-    uptime: "99.9%",
-  },
-},
-  {
-  id: 2,
-  title: "UrStyleKE E-Commerce Platform",
-  description:
-    "Full-stack e-commerce platform with JWT authentication, cart system, order management, and role-based admin product control deployed on Render and Vercel.",
+export const experiences = timeline.map((entry) => ({
+  id: entry.id,
+  role: entry.role,
+  company: entry.org,
+  period: entry.period ?? "",
+  type: entry.place,
+  description: entry.description,
+  achievements: [],
+  stack: entry.tags,
+}));
 
-  longDescription:
-    "Built using Next.js (App Router) for the frontend and Flask (Python) backend with SQLAlchemy ORM. Implements secure JWT authentication with refresh tokens, protected checkout flow, and persistent cart management using localStorage. Features include order creation, payment simulation flow, product CRUD endpoints, and admin-only controls using is_admin flag migration. Backend deployed on Render with CORS configured for Vercel frontend.",
+export const stats = index.map((item) => ({
+  label: item.label,
+  value: item.value,
+  suffix: "",
+}));
 
-  image: "/urstyleke.png",
-
-  tags: [
-    "Next.js",
-    "Flask",
-    "JWT",
-    "SQLAlchemy",
-    "PostgreSQL/SQLite",
-    "Flask-CORS",
-    "Render",
-    "Vercel"
-  ],
-
-  liveUrl: "https://urstyleke2.vercel.app/",
-  githubUrl: "https://github.com/Griffinsshem/urstyleke2",
-
-  featured: true,
-
-  metrics: {
-    performance: "Optimized API responses (<200ms average)",
-    users: "Authentication + checkout flow active users",
-    uptime: "99%+ Render deployment availability"
-  }
-},
-  {
-  "id": 3,
-  "title": "SokoMtaani",
-  "description": "Architected and led development of a full-stack peer-to-peer marketplace enabling direct buyer–seller transactions, reducing costs and eliminating intermediaries.",
-  "longDescription": "Designed and implemented SokoMtaani, a scalable peer-to-peer marketplace platform connecting buyers and sellers directly. Spearheaded full-stack development as Tech Lead, leveraging Next.js for the frontend and Flask for backend services. Integrated secure JWT-based authentication, RESTful API endpoints, and a relational database (SQLite) to ensure robust data management. Deployed frontend on Vercel and backend on Render, achieving 100% uptime and seamless cross-platform performance. Delivered a secure, cost-efficient solution that streamlined transactions and enhanced user trust.",
-  "image": "/sokoMtaani.png",
-  "tags": ["Next.js", "Flask", "Vercel", "SQLite", "JWT Authentication", "Render"],
-  "liveUrl": "https://sokomtaani.vercel.app/",
-  "githubUrl": "https://github.com/Griffinsshem/Sokomtaani",
-  "featured": true,
-  "metrics": {
-    "performance": "100",
-    "users": "Pilot Deployment",
-    "uptime": "100%"
-  }
-},
-  // {
-  //   id: 4,
-  //   title: "Task Management App",
-  //   description:
-  //     "Kanban-style project management tool with drag-and-drop, real-time collaboration via WebSockets, and offline support.",
-  //   longDescription:
-  //     "React DnD Kit for drag-and-drop. Socket.io for presence and live updates. IndexedDB for offline-first capability.",
-  //   image: "/projects/taskapp.png",
-  //   tags: ["React", "Socket.io", "DnD Kit", "IndexedDB"],
-  //   liveUrl: "https://example.com",
-  //   githubUrl: "https://github.com/griffins/task-app",
-  //   featured: false,
-  //   metrics: { performance: "93", users: "300+", uptime: "99.5%" },
-  // },
-];
-
-
-export const experiences = [
-  {
-    id: 1,
-    role: "Frontend Developer",
-    company: "TechCorp Africa",
-    period: "2023 – Present",
-    type: "Full-time",
-    description:
-      "Lead frontend development for a B2B SaaS platform serving 10K+ users. Reduced bundle size by 40 % and improved LCP from 4.2 s to 1.8 s.",
-    achievements: [
-      "Architected micro-frontend module federation setup",
-      "Reduced bundle size by 40 % via code splitting & tree shaking",
-      "Improved Lighthouse score from 62 to 97",
-      "Mentored 3 junior developers",
-    ],
-    stack: ["React", "Next.js", "TypeScript", "Tailwind", "AWS"],
-  },
-  {
-    id: 2,
-    role: "Full-Stack Developer",
-    company: "Freelance",
-    period: "2022 – 2023",
-    type: "Contract",
-    description:
-      "Delivered 12+ client projects spanning e-commerce stores, landing pages, and internal tools. Maintained 5-star client satisfaction.",
-    achievements: [
-      "Delivered 12 projects on time and under budget",
-      "Built a custom headless CMS for a media company",
-      "Integrated M-Pesa & Stripe payment gateways",
-      "5-star rating across all platforms",
-    ],
-    stack: ["React", "Node.js", "Python", "Flask", "PostgreSQL"],
-  },
-  {
-    id: 3,
-    role: "Junior Frontend Developer",
-    company: "StartupKE",
-    period: "2021 – 2022",
-    type: "Full-time",
-    description:
-      "Joined as the first frontend hire. Built the company's customer-facing web app from scratch using React and Firebase.",
-    achievements: [
-      "Built customer portal from zero to production in 3 months",
-      "Implemented real-time notifications with Firebase",
-      "Established the component library used company-wide",
-      "Reduced page load time by 35 %",
-    ],
-    stack: ["React", "Firebase", "Tailwind", "JavaScript"],
-  },
-];
-
-export const stats = [
-  { label: "Years Experience", value: "1+", suffix: "" },
-  { label: "Projects Shipped", value: "5+", suffix: "" },
-  { label: "Happy Clients", value: "1+", suffix: "" },
-  { label: "Lighthouse Score", value: "97", suffix: "%" },
-];
+projects.forEach((project) => {
+  project.description = project.tagline;
+  project.longDescription = project.build;
+  project.tags = project.tech;
+  project.liveUrl = project.live;
+  project.githubUrl = project.source;
+  project.featured = true;
+  project.metrics = {};
+});
