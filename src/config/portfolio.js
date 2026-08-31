@@ -283,7 +283,7 @@ export const site = {
   title: `${personal.fullName} - ${personal.role}`,
   description:
     "Griffins Ondeyo is a frontend-focused developer in Nairobi, Kenya, building interfaces with React, Next.js and Tailwind CSS, backed by Python and Flask services.",
-  footerLine: "Built in Nairobi. Deployed on a Friday, like everything else.",
+  footerLine: "Built in Nairobi by Griffins Ondeyo, like everything else.",
 };
 
 personal.bio = about.paragraphs;
