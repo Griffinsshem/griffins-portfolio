@@ -180,6 +180,17 @@ export const projects = [
 
 export const timeline = [
   {
+    id: "devops-course",
+    period: "2026 - In progress",
+    year: "2026",
+    role: "Master DevOps with AWS, Docker, Kubernetes, GCP, GitHub Actions, ArgoCD, GitOps, Terraform, Monitoring & AI (in progress)",
+    org: "Udemy",
+    place: "Self-paced",
+    description:
+      "Working through a 64-hour DevOps course covering containers, CI/CD with Jenkins and GitHub Actions, Terraform, and deployment on AWS and GCP. Listed here because it is current, not because it is finished.",
+    tags: ["Docker", "Kubernetes", "Terraform", "AWS", "CI/CD"],
+  },
+  {
     id: "independent",
     period: "2025 - Present",
     year: "2025",

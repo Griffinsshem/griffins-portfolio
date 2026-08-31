@@ -58,6 +58,7 @@ export default function HeroSchematic() {
                 onMouseEnter={() => setActive(layer.id)}
                 onFocus={() => setActive(layer.id)}
                 onBlur={() => setActive(null)}
+                onClick={() => setActive((prev) => (prev === layer.id ? null : layer.id))}
                 aria-describedby="schematic-readout"
                 className={`
                   group flex w-full items-baseline gap-4 py-3 text-left
