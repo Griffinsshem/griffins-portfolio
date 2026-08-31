@@ -44,18 +44,21 @@ export default function About() {
 
       <div className="grid-12 mt-20 items-start gap-y-12 md:mt-28">
         <motion.figure
-          className="col-span-8 sm:col-span-5 md:col-span-4 lg:col-span-3"
+          className="col-span-8 sm:col-span-5 md:col-span-4"
           {...reveal(reduce, revealImage)}
         >
-          <div className="relative aspect-square w-full overflow-hidden bg-surface-raised">
-            <Image
-              src={personal.portrait}
-              alt={`${personal.fullName}, ${personal.role}`}
-              fill
-              sizes="(max-width: 640px) 66vw, (max-width: 1024px) 33vw, 300px"
-              className="object-cover"
-            />
-          </div>
+          {/* Rendered at its intrinsic 600x600 with width and height
+              attributes rather than with fill. fill needs a positioned
+              parent whose height resolves, which is one more thing that can
+              silently collapse; this cannot. */}
+          <Image
+            src={personal.portrait}
+            alt={`${personal.fullName}, ${personal.role}`}
+            width={600}
+            height={600}
+            sizes="(max-width: 640px) 66vw, (max-width: 1024px) 40vw, 340px"
+            className="w-full bg-surface-raised object-cover"
+          />
           <figcaption className="meta mt-3">{personal.location}</figcaption>
         </motion.figure>
 

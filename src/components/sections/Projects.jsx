@@ -101,7 +101,7 @@ function ProjectFull({ project, priority }) {
   const reduce = useReducedMotion();
   return (
     <article className="grid-12 gap-y-8">
-      <motion.div className="col-span-12 lg:col-span-7" {...reveal(reduce, revealUp)}>
+      <motion.div className="col-span-12 lg:col-span-7" {...reveal(reduce, revealImage)}>
         <ProjectHeader project={project} />
       </motion.div>
       <motion.div className="col-span-12 mt-2" {...reveal(reduce, revealImage)}>
