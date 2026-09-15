@@ -47,7 +47,7 @@ export const stack = [
     items: [
       { name: "React", primary: true },
       { name: "Next.js", primary: true },
-      { name: "TypeScript" },
+      { name: "TypeScript", primary: true },
       { name: "JavaScript", primary: true },
       { name: "Tailwind CSS", primary: true },
       { name: "Framer Motion" },
@@ -78,6 +78,7 @@ export const stack = [
       { name: "MySQL" },
       { name: "SQLAlchemy ORM", primary: true },
       { name: "Firebase Auth" },
+      { name: "Neon" },
     ],
   },
   {
@@ -97,8 +98,34 @@ export const stack = [
 
 export const projects = [
   {
-    id: "sokomtaani",
+    id: "clinicflow",
     index: "01",
+    title: "ClinicFlow",
+    tagline: "Appointment and follow-up management for small clinics still tracking return visits on paper.",
+    year: "2026",
+    role: "Solo, full-stack",
+    context: "Personal project, AI-paired build",
+
+    problem:
+      "Small clinics lose patients between visits, not through negligence: someone is told to come back in six weeks, it goes in a diary, and nobody reopens that page. Storing appointments is easy; making a commitment resurface on its own, on the right day, without anyone remembering to look, is the actual problem. The second was multi-tenancy. Several clinics share one deployment, and a bug that leaks one clinic's patients into another's dashboard is a data breach, not a display glitch.",
+
+    build:
+      "Tenant isolation lives in the schema rather than the query layer. Each patient carries a UNIQUE (id, clinic_id) constraint, and appointments and follow-ups reference that pair through composite foreign keys, so Postgres rejects any row whose clinic_id disagrees with its patient's even if the application code is wrong. Query scoping is the second layer, and cross-clinic access returns 404 rather than 403 so the ID space cannot be probed. Auth uses httpOnly cookies behind a server-side proxy: the JWT is set by a Next.js route handler and never reaches client JavaScript, which costs a proxy layer and CSRF handling but means an XSS bug anywhere in the dependency tree cannot exfiltrate a session. Overdue state is derived per request from the follow-up date in the clinic's timezone, never stored, because a stored flag goes stale at midnight and needs a cron job to stay honest.",
+
+    outcome:
+      "Shipped and deployed: Next.js on Vercel, Flask on Render, Postgres on Neon, with 99 backend tests covering authentication, validation and tenant isolation. The full workflow runs end to end in production, from registering a clinic to booking the visit after a completed follow-up. What I would change: the frontend has no automated tests, and two responsive layout bugs reached production before I caught them by resizing a browser, which is exactly what a component test would have caught first.",
+
+    tech: ["Next.js 16", "TypeScript", "Tailwind CSS", "Flask", "SQLAlchemy", "PostgreSQL", "Vercel", "Render", "Neon"],
+    image: "/clinicflow.png",
+    width: 2379,
+    height: 1101,
+    live: "https://clinicflow-mu-nine.vercel.app",
+    source: "https://github.com/Griffinsshem/clinicflow",
+    layout: "full",
+  },
+  {
+    id: "sokomtaani",
+    index: "02",
     title: "SokoMtaani",
     tagline: "A peer-to-peer marketplace that puts buyers and sellers in direct contact.",
     year: "2025",
@@ -120,12 +147,12 @@ export const projects = [
     height: 740,
     live: "https://sokomtaani.vercel.app/",
     source: "https://github.com/Griffinsshem/Sokomtaani",
-    layout: "full",
+    layout: "split",
   },
 
   {
     id: "urstyleke",
-    index: "02",
+    index: "03",
     title: "UrStyleKE",
     tagline: "A fashion storefront with a real checkout path and an admin behind it.",
     year: "2025",
@@ -147,12 +174,12 @@ export const projects = [
     height: 886,
     live: "https://urstyleke2.vercel.app/",
     source: "https://github.com/Griffinsshem/urstyleke2",
-    layout: "split",
+    layout: "offset",
   },
 
   {
     id: "carbify",
-    index: "03",
+    index: "04",
     title: "Carbify",
     tagline: "Car rental booking, from browse to confirmed reservation.",
     year: "2025",
@@ -174,7 +201,7 @@ export const projects = [
     height: 877,
     live: "https://carbify-lemon.vercel.app/",
     source: "https://github.com/Griffinsshem/Carbify",
-    layout: "offset",
+    layout: "split",
   },
 ];
 
