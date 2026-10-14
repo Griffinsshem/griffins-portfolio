@@ -390,6 +390,30 @@
   }
 }
 
+@layer components {
+  /* Hollow display type. A second typographic voice for one line of the
+     hero headline, costing no new colour and no new element.
+
+     The solid declaration comes first and the hollow treatment is gated
+     behind @supports, because -webkit-text-fill-color: transparent without
+     a working text-stroke renders invisible text. Same rule the image
+     reveal taught us: an enhancement must fail to legible, not to absent.
+
+     1.15px rather than 1px: at display sizes a hairline stroke reads as
+     grey rather than as an outline. */
+  .type-outline {
+    color: var(--ink);
+  }
+
+  @supports (-webkit-text-stroke: 1px currentColor) {
+    .type-outline {
+      -webkit-text-stroke: 1.4px var(--ink);
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .link:hover::after {
     transform: scaleX(1);

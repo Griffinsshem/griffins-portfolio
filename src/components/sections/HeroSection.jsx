@@ -36,7 +36,6 @@ export default function HeroSection() {
             {hero.headline.map((line, i) => (
               <span key={line} className="block overflow-hidden pb-[0.08em]">
                 <motion.span
-                  className="block"
                   initial={reduce ? false : { y: "108%" }}
                   animate={{ y: "0%" }}
                   transition={{
@@ -44,6 +43,9 @@ export default function HeroSection() {
                     delay: reduce ? 0 : HERO_BEAT.headline + i * 0.09,
                     ease: EASE.reveal,
                   }}
+                  /* Second line hollow: one typographic accent, not a
+                     treatment applied to every heading on the page. */
+                  className={i === 1 ? "block type-outline" : "block"}
                 >
                   {line}
                 </motion.span>
