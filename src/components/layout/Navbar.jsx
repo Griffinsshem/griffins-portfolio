@@ -12,6 +12,7 @@ import { List, X } from "@phosphor-icons/react/dist/ssr";
 import { personal, navigation } from "@/config/portfolio";
 import { EASE, DUR } from "@/lib/motion";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 const SCROLL_THRESHOLD = 24;
 
@@ -159,6 +160,8 @@ export default function Navbar() {
             </button>
           </div>
         </nav>
+
+        <ScrollProgress />
       </header>
 
       <AnimatePresence>
