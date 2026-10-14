@@ -17,7 +17,7 @@ export default function Contact() {
   const reduce = useReducedMotion();
 
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="shell section">
+    <section id="contact" aria-labelledby="contact-heading" className="field shell section">
       <motion.div
         variants={stagger(0.09)}
         initial={reduce ? false : "hidden"}

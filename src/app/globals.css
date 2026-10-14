@@ -22,6 +22,10 @@
   --accent-soft: rgb(192 54 29 / 0.10);
 
   --scrim: rgb(243 242 238 / 0.85);
+
+  /* Blueprint field. Deliberately fainter than --line: this is
+     the paper the drawing sits on, not a structural rule. */
+  --grid-line: rgb(23 22 19 / 0.12);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,6 +48,7 @@
     --accent-hover: #ff795e;
     --accent-soft: rgb(255 92 60 / 0.12);
     --scrim: rgb(18 18 16 / 0.85);
+    --grid-line: rgb(237 235 228 / 0.095);
   }
 }
 
@@ -62,6 +67,7 @@
   --accent-hover: #a52c16;
   --accent-soft: rgb(192 54 29 / 0.10);
   --scrim: rgb(243 242 238 / 0.85);
+  --grid-line: rgb(23 22 19 / 0.12);
 }
 
 [data-theme="dark"] {
@@ -79,6 +85,7 @@
   --accent-hover: #ff795e;
   --accent-soft: rgb(255 92 60 / 0.12);
   --scrim: rgb(18 18 16 / 0.85);
+  --grid-line: rgb(237 235 228 / 0.095);
 }
 
 :root {
@@ -86,6 +93,9 @@
   --section-y-tight: clamp(3.5rem, 7vw, 7rem);
 
   --gutter: clamp(1.25rem, 5vw, 4.5rem);
+
+  /* Blueprint cell size: 40px on a phone, 72px on a wide screen. */
+  --grid-cell: clamp(3rem, 5.5vw, 6rem);
 
   --page: 82rem;      
   --measure: 62ch;    
@@ -347,6 +357,36 @@
     height: 5px;
     border-radius: var(--radius-pill);
     background: var(--accent);
+  }
+}
+
+@layer components {
+  /* Blueprint field: a ruled grid behind a section, drawn with two 1px
+     gradients rather than a background image, so it loads nothing, scales
+     with the viewport and costs no paint beyond a single composited layer.
+
+     Masked to fade out before the section ends, so it reads as a sheet the
+     content sits on rather than a texture competing with the text. The
+     pseudo-element is z-index -1 inside an isolated stacking context, which
+     keeps it behind the content without escaping the section. */
+  .field {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .field::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-cell) var(--grid-cell);
+    background-position: center top;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
   }
 }
 

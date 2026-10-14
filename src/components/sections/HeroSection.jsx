@@ -19,7 +19,7 @@ export default function HeroSection() {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="shell flex min-h-[100svh] flex-col justify-center pb-16 pt-28 md:pb-24 md:pt-32"
+      className="field shell flex min-h-[100svh] flex-col justify-center pb-16 pt-28 md:pb-24 md:pt-32"
     >
       {personal.available && (
         <motion.div {...beat(HERO_BEAT.status, 8)} className="mb-10 md:mb-14">
