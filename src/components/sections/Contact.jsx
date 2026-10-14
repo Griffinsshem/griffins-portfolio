@@ -48,7 +48,7 @@ export default function Contact() {
               <p className="meta mb-3">{contact.cta}</p>
               <a
                 href={`mailto:${personal.email}`}
-                className="link font-display text-title break-all text-ink hover:text-accent"
+                className="link font-display text-heading break-words text-ink hover:text-accent sm:text-title"
               >
                 {personal.email}
               </a>

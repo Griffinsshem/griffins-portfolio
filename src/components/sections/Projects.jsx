@@ -31,7 +31,7 @@ function ProjectMedia({ project, priority }) {
         height={project.height}
         priority={priority}
         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
-        className="w-full transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-[1.02]"
+        className="aspect-[5/3] w-full object-cover object-top transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-[1.02] sm:aspect-auto sm:object-contain"
       />
 
       <span

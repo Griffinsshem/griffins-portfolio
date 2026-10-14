@@ -411,6 +411,19 @@
       -webkit-text-fill-color: transparent;
       color: transparent;
     }
+
+    /* Below 768px the headline drops to roughly 42px, where a 1.4px stroke
+       is proportionally twice as heavy as it is at 88px: the counters fill
+       in and the line reads as muddy grey rather than as an outline. The
+       treatment is an accent, so it is dropped rather than made to survive
+       at a size it was not designed for. */
+    @media (max-width: 767px) {
+      .type-outline {
+        -webkit-text-stroke: 0;
+        -webkit-text-fill-color: var(--ink);
+        color: var(--ink);
+      }
+    }
   }
 }
 

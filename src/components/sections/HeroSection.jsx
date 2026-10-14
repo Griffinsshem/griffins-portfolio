@@ -19,7 +19,7 @@ export default function HeroSection() {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="field shell flex min-h-[100svh] flex-col justify-center pb-16 pt-28 md:pb-24 md:pt-32"
+      className="field shell flex min-h-[100svh] flex-col justify-center pb-12 pt-24 md:pb-24 md:pt-32"
     >
       {personal.available && (
         <motion.div {...beat(HERO_BEAT.status, 8)} className="mb-10 md:mb-14">
@@ -30,7 +30,7 @@ export default function HeroSection() {
         </motion.div>
       )}
 
-      <div className="grid-12 items-end gap-y-14">
+      <div className="grid-12 items-end gap-y-10 md:gap-y-14">
         <div className="col-span-12 lg:col-span-8">
           <h1 id="hero-heading" className="font-display text-display font-medium text-ink">
             {hero.headline.map((line, i) => (
@@ -62,7 +62,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="grid-12 mt-14 gap-y-8 md:mt-20">
+      <div className="grid-12 mt-10 gap-y-8 md:mt-20">
         <motion.p
           {...beat(HERO_BEAT.lead)}
           className="col-span-12 max-w-[46ch] text-lead text-muted md:col-span-7"
@@ -88,7 +88,7 @@ export default function HeroSection() {
 
       <motion.dl
         {...beat(HERO_BEAT.cta + 0.1)}
-        className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line pt-8 md:mt-24 md:grid-cols-4"
+        className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-line pt-8 md:mt-24 md:grid-cols-4"
       >
         {heroIndex.map((item) => (
           <div key={item.id} className="flex flex-col gap-1.5">
