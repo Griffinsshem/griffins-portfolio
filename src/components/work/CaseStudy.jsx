@@ -49,7 +49,7 @@ export default function CaseStudy({ project, prev, next }) {
           {project.tagline}
         </motion.p>
 
-        <motion.dl variants={revealUp} className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-line pt-8 md:grid-cols-4">
+        <motion.dl variants={revealUp} className="mt-10 grid grid-cols-1 gap-x-6 gap-y-6 border-t border-line pt-8 sm:grid-cols-2 md:grid-cols-4">
           <div className="flex flex-col gap-1.5">
             <dt className="meta text-faint">Role</dt>
             <dd className="text-[15px] text-ink">{project.role}</dd>
@@ -91,7 +91,7 @@ export default function CaseStudy({ project, prev, next }) {
             height={project.height}
             priority
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
-            className="w-full"
+            className="aspect-[5/3] w-full object-cover object-top sm:aspect-auto sm:object-contain"
           />
         </a>
       </motion.div>
