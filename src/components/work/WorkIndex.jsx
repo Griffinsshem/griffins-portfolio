@@ -1,0 +1,84 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { projects } from "@/config/portfolio";
+import { revealUp, stagger, viewportOnce } from "@/lib/motion";
+
+/* ==========================================================================
+   WORK INDEX
+
+   The homepage rail shows four screenshots and nothing else; this is where
+   a reader who wants more goes. It is a list rather than a grid, so each
+   project gets a full row of horizontal space for its tagline instead of
+   being cropped into a card.
+   ========================================================================== */
+
+export default function WorkIndex() {
+  const reduce = useReducedMotion();
+
+  return (
+    <div className="shell pb-24 pt-32 md:pb-32 md:pt-40">
+      <header>
+        <p className="meta"><span className="text-faint">03</span> Work</p>
+        <h1 className="mt-6 max-w-[18ch] font-display text-display text-ink">
+          Four things I built, and what I would change.
+        </h1>
+        <p className="prose-measure mt-8 text-lead text-muted">
+          Each one is a full case study: the problem, the decisions, and the parts
+          I would do differently.
+        </p>
+      </header>
+
+      <motion.ul
+        className="mt-16 flex flex-col md:mt-24"
+        variants={stagger(0.08)}
+        initial={reduce ? false : "hidden"}
+        whileInView="visible"
+        viewport={viewportOnce}
+      >
+        {projects.map((project) => (
+          <motion.li key={project.id} variants={revealUp} className="border-t border-line last:border-b">
+            <Link href={`/work/${project.id}`} className="group grid-12 items-center gap-y-6 py-8 md:py-10">
+              <div className="col-span-12 sm:col-span-5 md:col-span-4">
+                <div className="overflow-hidden bg-surface-raised">
+                  {/* alt is empty: the heading beside it already names the
+                      project, so describing the image repeats it. */}
+                  <Image
+                    src={project.image}
+                    alt=""
+                    width={project.width}
+                    height={project.height}
+                    sizes="(max-width: 640px) 100vw, 380px"
+                    className="aspect-[5/3] w-full object-cover object-top transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-[1.03]"
+                  />
+                </div>
+              </div>
+
+              <div className="col-span-12 flex flex-col gap-3 sm:col-span-7 md:col-span-7 md:col-start-6">
+                <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <span className="meta text-faint">{project.index}</span>
+                  <h2 className="font-display text-title text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
+                    {project.title}
+                  </h2>
+                </div>
+                <p className="max-w-[46ch] text-[15px] leading-relaxed text-muted">{project.tagline}</p>
+                <p className="meta text-faint">{project.role} · {project.year}</p>
+              </div>
+
+              <div className="col-span-12 md:col-span-1 md:justify-self-end">
+                <span className="inline-flex items-center gap-2 text-[14px] text-muted transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
+                  <span className="md:sr-only">Read case study</span>
+                  <ArrowRight size={14} weight="bold" aria-hidden="true"
+                    className="transition-transform duration-200 ease-[var(--ease-out)] group-hover:translate-x-1" />
+                </span>
+              </div>
+            </Link>
+          </motion.li>
+        ))}
+      </motion.ul>
+    </div>
+  );
+}

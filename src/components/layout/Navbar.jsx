@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   motion,
   AnimatePresence,
@@ -24,6 +25,13 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const reduce = useReducedMotion();
+
+  /* Section anchors only resolve on the home page. Anywhere else they are
+     prefixed so they navigate home first, which keeps one navigation array
+     serving every route instead of a second list for the work pages. */
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const hrefFor = (hash) => (isHome ? hash : `/${hash}`);
 
   const { scrollY } = useScroll();
 
@@ -92,7 +100,7 @@ export default function Navbar() {
           `}
         >
           <a
-            href="#home"
+            href={isHome ? "#home" : "/"}
             className="
               font-mono text-[13px] uppercase tracking-[0.18em] text-ink
               transition-colors duration-200 ease-[var(--ease-out)] hover:text-accent
@@ -111,7 +119,7 @@ export default function Navbar() {
               return (
                 <li key={item.href} className="relative">
                   <a
-                    href={item.href}
+                    href={hrefFor(item.href)}
                     aria-current={isActive ? "true" : undefined}
                     className={`
                       relative block py-1 text-[13.5px]
@@ -207,7 +215,7 @@ export default function Navbar() {
                     className="border-b border-line"
                   >
                     <a
-                      href={item.href}
+                      href={hrefFor(item.href)}
                       onClick={() => setMenuOpen(false)}
                       className="
                         block py-5 font-display text-[2rem] leading-none tracking-[-0.03em]
