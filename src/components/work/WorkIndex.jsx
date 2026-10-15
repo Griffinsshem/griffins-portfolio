@@ -22,9 +22,9 @@ export default function WorkIndex() {
   return (
     <div className="shell pb-24 pt-32 md:pb-32 md:pt-40">
       <header>
-        <p className="meta"><span className="text-faint">03</span> Work</p>
-        <h1 className="mt-6 max-w-[18ch] font-display text-display text-ink">
-          Four things I built, and what I would change.
+        <p className="meta">Work</p>
+        <h1 className="mt-6 max-w-[16ch] font-display text-display text-ink">
+          Four projects, in detail.
         </h1>
         <p className="prose-measure mt-8 text-lead text-muted">
           Each one is a full case study: the problem, the decisions, and the parts
@@ -57,24 +57,19 @@ export default function WorkIndex() {
                 </div>
               </div>
 
-              <div className="col-span-12 flex flex-col gap-3 sm:col-span-7 md:col-span-7 md:col-start-6">
+              <div className="col-span-12 flex flex-col gap-3 sm:col-span-7 md:col-span-8 md:col-start-5">
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                   <span className="meta text-faint">{project.index}</span>
-                  <h2 className="font-display text-title text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
+                  <h2 className="flex items-center gap-3 font-display text-title text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
                     {project.title}
+                    <ArrowRight size={18} weight="bold" aria-hidden="true"
+                      className="text-faint transition-[transform,color] duration-200 ease-[var(--ease-out)] group-hover:translate-x-1 group-hover:text-accent" />
                   </h2>
                 </div>
                 <p className="max-w-[46ch] text-[15px] leading-relaxed text-muted">{project.tagline}</p>
                 <p className="meta text-faint">{project.role} · {project.year}</p>
               </div>
 
-              <div className="col-span-12 md:col-span-1 md:justify-self-end">
-                <span className="inline-flex items-center gap-2 text-[14px] text-muted transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
-                  <span className="md:sr-only">Read case study</span>
-                  <ArrowRight size={14} weight="bold" aria-hidden="true"
-                    className="transition-transform duration-200 ease-[var(--ease-out)] group-hover:translate-x-1" />
-                </span>
-              </div>
             </Link>
           </motion.li>
         ))}

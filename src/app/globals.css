@@ -427,6 +427,38 @@
   }
 }
 
+@layer components {
+  /* Horizontal rail. Scroll-snap rather than a carousel library: the
+     browser already does momentum, drag, trackpad, touch and keyboard
+     correctly, and a library would add a dependency to reimplement them
+     worse.
+
+     The scrollbar is hidden because the cut-off card at the edge is the
+     affordance. scroll-padding-inline keeps a card that receives keyboard
+     focus clear of the gutter rather than flush against it.
+
+     Deliberately not auto-advancing: looping motion never resolves, and a
+     rail that moves on its own makes a screenshot impossible to study. */
+  .rail {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rail > * {
+    scroll-snap-align: start;
+    flex: none;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .link:hover::after {
     transform: scaleX(1);
