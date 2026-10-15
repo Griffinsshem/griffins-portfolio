@@ -105,7 +105,7 @@ export const stack = [
    -------------------------------------------------------------------------- */
 
 export const work = {
-  heading: "Shipped, and what I would do differently.",
+  heading: "What I built, and what I would change.",
   indexHeading: "The work, in detail.",
   indexLead:
     "Each one is a full case study: the problem, the decisions, and the parts I would do differently.",
