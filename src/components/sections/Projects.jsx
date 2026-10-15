@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { projects } from "@/config/portfolio";
+import { projects, work } from "@/config/portfolio";
 import { viewportOnce } from "@/lib/motion";
 
 /* ==========================================================================
@@ -36,7 +36,7 @@ export default function Projects() {
           </div>
           <div className="col-span-12 md:col-span-9">
             <h2 id="projects-heading" className="font-display text-title max-w-[18ch] text-ink">
-              Four things I built, and what I would change.
+              {work.heading}
             </h2>
           </div>
         </div>

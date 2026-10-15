@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { projects } from "@/config/portfolio";
+import { projects, work } from "@/config/portfolio";
 import { revealUp, stagger, viewportOnce } from "@/lib/motion";
 
 /* ==========================================================================
@@ -24,11 +24,10 @@ export default function WorkIndex() {
       <header>
         <p className="meta">Work</p>
         <h1 className="mt-6 max-w-[16ch] font-display text-display text-ink">
-          Four projects, in detail.
+          {work.indexHeading}
         </h1>
         <p className="prose-measure mt-8 text-lead text-muted">
-          Each one is a full case study: the problem, the decisions, and the parts
-          I would do differently.
+          {work.indexLead}
         </p>
       </header>
 

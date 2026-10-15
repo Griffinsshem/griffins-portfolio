@@ -96,6 +96,21 @@ export const stack = [
   },
 ];
 
+/* --------------------------------------------------------------------------
+   WORK COPY
+   Headings for the homepage rail and the /work index. They live here rather
+   than in the components because a hardcoded one already went stale: the
+   section read "Three things I built" for a while after ClinicFlow was
+   added. Neither counts, so adding a fifth project needs no edit here.
+   -------------------------------------------------------------------------- */
+
+export const work = {
+  heading: "Shipped, and what I would do differently.",
+  indexHeading: "The work, in detail.",
+  indexLead:
+    "Each one is a full case study: the problem, the decisions, and the parts I would do differently.",
+};
+
 export const projects = [
   {
     id: "clinicflow",
