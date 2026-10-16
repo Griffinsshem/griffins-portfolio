@@ -15,11 +15,28 @@ import { revealUp, revealImage, stagger, viewportOnce, reveal } from "@/lib/moti
    scroll, because the header is above the fold on arrival.
    ========================================================================== */
 
-function Block({ label, children }) {
+/* A field may be a string or an array of paragraphs. Projects whose build
+   notes run to several distinct decisions read as a list of them rather
+   than one slab, so the model carries the paragraph breaks and this
+   normalises both shapes to the same markup. */
+function Paragraphs({ body, className = "" }) {
+  const items = Array.isArray(body) ? body : [body];
+  return (
+    <div className={`flex flex-col gap-4 ${className}`}>
+      {items.map((text, i) => (
+        <p key={i} className="prose-measure text-[15px] leading-relaxed text-muted">
+          {text}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function Block({ label, body }) {
   return (
     <div className="flex flex-col gap-3">
       <p className="meta text-faint">{label}</p>
-      <p className="prose-measure text-[15px] leading-relaxed text-muted">{children}</p>
+      <Paragraphs body={body} />
     </div>
   );
 }
@@ -96,17 +113,45 @@ export default function CaseStudy({ project, prev, next }) {
         </a>
       </motion.div>
 
-      <motion.div
-        className="mt-16 grid gap-x-10 gap-y-12 md:mt-24 md:grid-cols-3"
-        variants={stagger(0.08)}
-        initial={reduce ? false : "hidden"}
-        whileInView="visible"
-        viewport={viewportOnce}
-      >
-        <motion.div variants={revealUp}><Block label="Problem">{project.problem}</Block></motion.div>
-        <motion.div variants={revealUp}><Block label="What I built">{project.build}</Block></motion.div>
-        <motion.div variants={revealUp}><Block label="Outcome">{project.outcome}</Block></motion.div>
-      </motion.div>
+      {/* Three columns suit a project whose build note is one paragraph. A
+          project that lists six separate decisions does not fit a third of
+          the width — it would run to roughly four times the height of the
+          columns beside it — so those stack in reading order instead, and
+          the decisions flow in two columns of their own. */}
+      {Array.isArray(project.build) ? (
+        <motion.div
+          className="mt-16 flex flex-col gap-12 md:mt-24"
+          variants={stagger(0.08)}
+          initial={reduce ? false : "hidden"}
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          <motion.div variants={revealUp}>
+            <Block label="Problem" body={project.problem} />
+          </motion.div>
+
+          <motion.div variants={revealUp} className="border-t border-line pt-10">
+            <p className="meta mb-6 text-faint">What I built</p>
+            <Paragraphs body={project.build} className="md:grid md:grid-cols-2 md:gap-x-10 md:gap-y-5" />
+          </motion.div>
+
+          <motion.div variants={revealUp} className="border-t border-line pt-10">
+            <Block label="Outcome" body={project.outcome} />
+          </motion.div>
+        </motion.div>
+      ) : (
+        <motion.div
+          className="mt-16 grid gap-x-10 gap-y-12 md:mt-24 md:grid-cols-3"
+          variants={stagger(0.08)}
+          initial={reduce ? false : "hidden"}
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          <motion.div variants={revealUp}><Block label="Problem" body={project.problem} /></motion.div>
+          <motion.div variants={revealUp}><Block label="What I built" body={project.build} /></motion.div>
+          <motion.div variants={revealUp}><Block label="Outcome" body={project.outcome} /></motion.div>
+        </motion.div>
+      )}
 
       <div className="mt-16 border-t border-line pt-6 md:mt-20">
         <p className="meta mb-4">Stack</p>

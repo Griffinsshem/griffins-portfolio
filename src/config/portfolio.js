@@ -113,8 +113,41 @@ export const work = {
 
 export const projects = [
   {
-    id: "clinicflow",
+    id: "kitengela-marines",
     index: "01",
+    title: "Kitengela Marines FC",
+    tagline: "The club's website, and the admin that keeps it true.",
+    year: "2026",
+    role: "Solo, full-stack",
+    context: "Built for Kitengela Marines FC, Kajiado County",
+
+    problem:
+      "Most small-club sites die the week after launch, when whoever built them stops updating them. The hard part was never the pages. It was making every fixture, squad, result and photograph something the club could change itself on a Sunday evening — without a developer, without a terminal, and without being able to break anything that matters.",
+
+    build: [
+      "Permissions are capabilities scoped per team, not roles checked in routes. A coach of the women's side cannot touch the men's squad, and the check lives in one place rather than being re-decided at every endpoint. That cost a layer of indirection before anything could be built on top of it.",
+      "The audit log is written by a database session listener rather than by the routes, so no endpoint can forget to record a change. It means the log cannot be bypassed, and it means the writes are harder to reason about when something unexpected appears in it.",
+      "Uploads are re-encoded rather than stored as sent, which strips the GPS coordinates phones embed in match-day photographs. Slower uploads, and a dependency on image tooling in production.",
+      "The front end distinguishes “nothing announced yet” from “the server is not answering”. Telling supporters the club has no fixtures because the API is down would be a lie, so every fetch returns a reason and every page has two empty states instead of one. Twice the states to write, and the only reason the site reads honestly on a free tier that sleeps.",
+      "Every kick-off is sent with an explicit +03:00 offset and displayed in Nairobi time. A form that sends a bare time tells every supporter the wrong hour.",
+      "Deleting is refused rather than cascaded. A photograph in use, a category with articles, a player with match records — the API says what is in the way instead of quietly taking related data with it. More friction for the club, and nothing disappears by accident.",
+    ],
+
+    outcome: [
+      "Live, with the club publishing its own news, squads, fixtures, results and photography. Twenty-three tables, 232 backend tests. The club has needed me for nothing since the content went in.",
+      "What I'd change: the API sleeps on a free tier, so the first visitor after a quiet spell waits. Loading skeletons and a patient retry make that survivable rather than solved — the real fix costs money, not code. And I'd configure database constraint naming from the first migration rather than hand-correcting three of them later.",
+    ],
+
+    tech: ["Next.js 16", "React 19", "TypeScript", "Flask 3", "PostgreSQL", "Cloudinary"],
+    image: "/kitengela-marines.png",
+    width: 3200,
+    height: 1480,
+    live: "https://kitengela-marines.vercel.app/",
+    source: "https://github.com/Griffinsshem/kitengela-marines",
+  },
+  {
+    id: "clinicflow",
+    index: "02",
     title: "ClinicFlow",
     tagline: "Appointment and follow-up management for small clinics still tracking return visits on paper.",
     year: "2026",
@@ -136,11 +169,35 @@ export const projects = [
     height: 1101,
     live: "https://clinicflow-mu-nine.vercel.app",
     source: "https://github.com/Griffinsshem/clinicflow",
-    layout: "full",
+  },
+  {
+    id: "propflow",
+    index: "03",
+    title: "PropFlow",
+    tagline: "A maintenance tracker that takes a repair from a tenant's report to a closed work order.",
+    year: "2026",
+    role: "Solo, full-stack",
+    context: "Personal project",
+
+    problem:
+      "Four kinds of people share every request, and each may see only their part: a tenant their own repairs, a contractor only their jobs, a manager only their buildings. The hard part was making that true on every request rather than in the interface, keeping one honest history when two people change the same record at once, and opening a public demo to strangers without letting them email anyone, see each other, or leave anything behind.",
+
+    build:
+      "Roles are enforced by the API from a single permission matrix, so the frontend can never be the only guard; the cost was writing every query to scope by organization, property and role. The browser talks only to a Next.js proxy holding a shared secret, which closes the API to everyone else; that extra hop later broke rate limiting, because counting proxy hops recorded Cloudflare's address instead of the visitor's, and the fix was a signed header of our own. Concurrent edits carry a version and are shown to the second editor instead of being overwritten, which meant a conflict screen for every form. Photos go straight to Cloudflare R2 through short-lived signed links, keeping files out of the API at the price of CORS and CSP rules that had to match exactly. The demo builds each visitor a private sandbox through the real services; because the audit log is append-only, demos must never write to it, or they could never be deleted.",
+
+    outcome:
+      "Shipped at no cost on Vercel, Render and Neon, with hourly clean-up on GitHub Actions, 368 API tests, 76 unit tests and 43 browser journeys on every change, and 21 decision records. Free hosting shaped more than expected: no background worker, an API that sleeps, and blocked email ports. I'd buy a domain from the start, since emails still arrive from a relay address and sometimes land in Promotions; design for phones from the first screen instead of retrofitting a menu; and add the formatting check to CI on day one rather than after a 51-file cleanup.",
+
+    tech: ["Next.js 16", "TypeScript", "Flask", "PostgreSQL", "Redis", "Cloudflare R2", "Playwright"],
+    image: "/propflow.png",
+    width: 3200,
+    height: 1480,
+    live: "https://propflow-omega-tawny.vercel.app/",
+    source: "https://github.com/Griffinsshem/propflow",
   },
   {
     id: "sokomtaani",
-    index: "02",
+    index: "04",
     title: "SokoMtaani",
     tagline: "A peer-to-peer marketplace that puts buyers and sellers in direct contact.",
     year: "2025",
@@ -162,12 +219,11 @@ export const projects = [
     height: 740,
     live: "https://sokomtaani.vercel.app/",
     source: "https://github.com/Griffinsshem/Sokomtaani",
-    layout: "split",
   },
 
   {
     id: "urstyleke",
-    index: "03",
+    index: "05",
     title: "UrStyleKE",
     tagline: "A fashion storefront with a real checkout path and an admin behind it.",
     year: "2025",
@@ -189,12 +245,11 @@ export const projects = [
     height: 886,
     live: "https://urstyleke2.vercel.app/",
     source: "https://github.com/Griffinsshem/urstyleke2",
-    layout: "offset",
   },
 
   {
     id: "carbify",
-    index: "04",
+    index: "06",
     title: "Carbify",
     tagline: "Car rental booking, from browse to confirmed reservation.",
     year: "2025",
@@ -216,7 +271,6 @@ export const projects = [
     height: 877,
     live: "https://carbify-lemon.vercel.app/",
     source: "https://github.com/Griffinsshem/Carbify",
-    layout: "split",
   },
 ];
 
