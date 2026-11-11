@@ -5,14 +5,14 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { projects, work } from "@/config/portfolio";
-import { revealUp, settleImage, stagger } from "@/lib/motion";
+import { revealCard, settleImage, stagger } from "@/lib/motion";
 import RevealText from "@/components/ui/RevealText";
 import Magnetic from "@/components/ui/Magnetic";
 import { useSpotlight } from "@/hooks/useSpotlight";
 
 /* One cascade for the whole rail. Defined once at module scope so the
    variants object is stable across renders. */
-const railStagger = stagger(0.09);
+const railStagger = stagger(0.14, 0.05);
 
 /* ==========================================================================
    WORK (homepage)
@@ -64,12 +64,19 @@ export default function Projects() {
           variants={railStagger}
           initial={reduce ? false : "hidden"}
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          /* Fire when the rail is properly on screen, not when its top
+              edge first peeks in. At amount 0.2 the cascade began while the
+              cards were still at the bottom of the viewport and had
+              finished before the reader scrolled them into view, so it
+              looked like the cards were simply there. The negative bottom
+              margin holds it back until the rail is well inside the
+              screen. */
+          viewport={{ once: true, amount: 0.4, margin: "0px 0px -15% 0px" }}
         >
           {projects.map((project) => (
             <motion.li
               key={project.id}
-              variants={revealUp}
+              variants={revealCard}
               /* Deliberately under a full viewport so the next card is always
                  partly visible, at every breakpoint. */
               className="w-[78vw] max-w-[460px] sm:w-[54vw] lg:w-[34vw]"

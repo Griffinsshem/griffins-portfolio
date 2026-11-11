@@ -51,6 +51,19 @@ export const revealImage = {
 /* Screenshot settling into its frame as the card reveals. Scale only, so it
    composites on the GPU, and it lives on a wrapper inside the overflow
    clip so it never fights the CSS hover zoom on the image itself. */
+/* A card on the homepage rail. Travels further and takes longer than
+   revealUp (36px over 0.8s against 20px over 0.7s) because on a wide rail
+   the cards are far apart and a 20px lift was too small to read as
+   movement, especially with only three cards on screen at once. */
+export const revealCard = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: EASE.reveal },
+  },
+};
+
 export const settleImage = {
   hidden: { scale: 1.08 },
   visible: {
