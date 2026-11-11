@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { personal, about } from "@/config/portfolio";
 import { reveal, revealUp, revealImage, stagger, viewportOnce } from "@/lib/motion";
+import RevealText from "@/components/ui/RevealText";
 
 export default function About() {
   const reduce = useReducedMotion();
@@ -19,18 +20,19 @@ export default function About() {
 
         <motion.div
           className="col-span-12 md:col-span-9 lg:col-span-8"
-          variants={stagger(0.08)}
+          /* delayChildren holds the paragraphs back so they follow the
+             headline's word reveal instead of racing it. */
+          variants={stagger(0.08, 0.3)}
           initial={reduce ? false : "hidden"}
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <motion.h2
+          <h2
             id="about-heading"
-            variants={revealUp}
             className="font-display text-title max-w-[20ch] text-ink"
           >
-            {about.statement}
-          </motion.h2>
+            <RevealText>{about.statement}</RevealText>
+          </h2>
 
           <div className="prose-measure mt-8 flex flex-col gap-5 md:mt-10">
             {about.paragraphs.map((paragraph) => (

@@ -459,6 +459,66 @@
   }
 }
 
+@layer components {
+  /* Cursor spotlight. A soft radial glow that follows the pointer inside an
+     element, drawn by a pseudo-element so it adds no markup and costs one
+     composited layer. useSpotlight() writes --mx / --my; everything else is
+     here.
+
+     Two modes:
+       .spotlight        glow sits BEHIND the content, tinted with the
+                         accent. For rows and surfaces with no image on them.
+       .spotlight-over   glow sits ON TOP, as a faint white sheen. For
+                         screenshots, where a glow behind would be hidden
+                         by the image. White rather than the accent, so it
+                         lifts a screenshot without recolouring it.
+
+     --spot-bleed lets a row's glow extend past its box horizontally, so
+     text at the edge of the content column is not flush against the edge of
+     the glow. Set per element: [--spot-bleed:1rem].
+
+     Shown only where hover exists (mouse and trackpad), so touch devices
+     never get a glow stuck at the last tap. Hidden entirely under reduced
+     motion. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0 calc(var(--spot-bleed, 0px) * -1);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      var(--spot-size, 380px) circle at var(--mx, 50%) var(--my, 50%),
+      var(--spot-color, var(--accent-soft)),
+      transparent 70%
+    );
+    transition: opacity var(--dur-ui) var(--ease-out);
+  }
+
+  .spotlight-over::before {
+    z-index: 1;
+    --spot-size: 260px;
+    --spot-color: rgb(255 255 255 / 0.16);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight:hover::before {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spotlight::before {
+      display: none;
+    }
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   .link:hover::after {
     transform: scaleX(1);

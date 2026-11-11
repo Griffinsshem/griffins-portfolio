@@ -12,6 +12,7 @@ import {
 const LINK_ICONS = { github: GithubLogo, linkedin: LinkedinLogo, x: XLogo };
 import { personal, contact, social } from "@/config/portfolio";
 import { revealUp, stagger, viewportOnce } from "@/lib/motion";
+import RevealText from "@/components/ui/RevealText";
 
 export default function Contact() {
   const reduce = useReducedMotion();
@@ -19,7 +20,9 @@ export default function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="field shell section">
       <motion.div
-        variants={stagger(0.09)}
+        /* delayChildren lets the headline's word reveal lead; the lead
+           paragraph and links then follow it. */
+        variants={stagger(0.09, 0.2)}
         initial={reduce ? false : "hidden"}
         whileInView="visible"
         viewport={viewportOnce}
@@ -32,13 +35,12 @@ export default function Contact() {
           </div>
 
           <div className="col-span-12 md:col-span-9">
-            <motion.h2
+            <h2
               id="contact-heading"
-              variants={revealUp}
               className="font-display text-display max-w-[14ch] text-ink"
             >
-              {contact.statement}
-            </motion.h2>
+              <RevealText step={0.07}>{contact.statement}</RevealText>
+            </h2>
 
             <motion.p variants={revealUp} className="prose-measure mt-8 text-lead text-muted">
               {contact.lead}

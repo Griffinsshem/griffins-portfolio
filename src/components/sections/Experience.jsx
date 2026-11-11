@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { timeline } from "@/config/portfolio";
 import { revealUp, stagger, viewportOnce } from "@/lib/motion";
+import RevealText from "@/components/ui/RevealText";
 
 
 export default function Experience() {
@@ -19,7 +20,7 @@ export default function Experience() {
 
         <div className="col-span-12 md:col-span-9">
           <h2 id="experience-heading" className="font-display text-title max-w-[20ch] text-ink">
-            Networks, then structures, then software.
+            <RevealText>Networks, then structures, then software.</RevealText>
           </h2>
           <p className="prose-measure mt-6 text-muted">
             Not a straight line into this field. Each step taught me something the

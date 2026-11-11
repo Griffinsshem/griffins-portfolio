@@ -5,6 +5,7 @@ import { ArrowDown, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { personal, hero, index as heroIndex } from "@/config/portfolio";
 import { EASE, DUR, HERO_BEAT } from "@/lib/motion";
 import HeroSchematic from "@/components/ui/HeroSchematic";
+import Magnetic from "@/components/ui/Magnetic";
 
 export default function HeroSection() {
   const reduce = useReducedMotion();
@@ -74,15 +75,19 @@ export default function HeroSection() {
           {...beat(HERO_BEAT.cta)}
           className="col-span-12 flex flex-wrap items-center gap-3 md:col-span-5 md:justify-end"
         >
-          <a href={hero.cta.href} className="btn">
-            {hero.cta.label}
-            <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
-          </a>
+          <Magnetic>
+            <a href={hero.cta.href} className="btn">
+              {hero.cta.label}
+              <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
+            </a>
+          </Magnetic>
 
-          <a href={personal.resume} download className="btn btn-ghost">
-            Resume
-            <ArrowDown size={15} weight="bold" aria-hidden="true" />
-          </a>
+          <Magnetic>
+            <a href={personal.resume} download className="btn btn-ghost">
+              Resume
+              <ArrowDown size={15} weight="bold" aria-hidden="true" />
+            </a>
+          </Magnetic>
         </motion.div>
       </div>
 

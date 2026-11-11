@@ -48,6 +48,29 @@ export const revealImage = {
   },
 };
 
+/* Screenshot settling into its frame as the card reveals. Scale only, so it
+   composites on the GPU, and it lives on a wrapper inside the overflow
+   clip so it never fights the CSS hover zoom on the image itself. */
+export const settleImage = {
+  hidden: { scale: 1.08 },
+  visible: {
+    scale: 1,
+    transition: { duration: DUR.slow, ease: EASE.reveal },
+  },
+};
+
+/* A single tool name in the stack list: small and quick, because there are
+   up to a dozen per row and the cascade should read as a ripple rather than
+   a queue. */
+export const revealChip = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: DUR.ui + 0.2, ease: EASE.out },
+  },
+};
+
 export const stagger = (staggerChildren = 0.06, delayChildren = 0) => ({
   hidden: {},
   visible: { transition: { staggerChildren, delayChildren } },

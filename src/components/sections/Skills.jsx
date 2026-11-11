@@ -9,7 +9,14 @@ import {
   Wrench,
 } from "@phosphor-icons/react/dist/ssr";
 import { stack } from "@/config/portfolio";
-import { revealUp, stagger, viewportOnce } from "@/lib/motion";
+import { revealUp, revealChip, stagger, viewportOnce } from "@/lib/motion";
+import RevealText from "@/components/ui/RevealText";
+
+/* Tool names ripple in after their row has landed. The delay is what keeps
+   the two levels distinct: the row appears, then its contents settle into
+   it, rather than everything arriving at once. Module scope so the object
+   is stable across renders. */
+const toolStagger = stagger(0.025, 0.18);
 
 /* One icon per group rather than one per tool. Twenty-eight brand marks
    would need a dependency for the SVG paths and would put colour back into a
@@ -42,7 +49,7 @@ export default function Skills() {
 
         <div className="col-span-12 md:col-span-9">
           <h2 id="skills-heading" className="font-display text-title max-w-[16ch] text-ink">
-            Tools I reach for, grouped by what they do.
+            <RevealText>Tools I reach for, grouped by what they do.</RevealText>
           </h2>
 
           <motion.div
@@ -70,12 +77,15 @@ export default function Skills() {
                   {group.label}
                 </p>
 
-                <ul className="col-span-12 flex flex-wrap gap-x-6 gap-y-3 md:col-span-9">
+                <motion.ul
+                  variants={toolStagger}
+                  className="col-span-12 flex flex-wrap gap-x-6 gap-y-3 md:col-span-9"
+                >
                   {group.items.map((item) => {
                     const isDimmed = hovered !== null && hovered !== item.name;
 
                     return (
-                      <li key={item.name}>
+                      <motion.li key={item.name} variants={revealChip}>
                         <span
                           onMouseEnter={() => setHovered(item.name)}
                           onMouseLeave={() => setHovered(null)}
@@ -89,10 +99,10 @@ export default function Skills() {
                         >
                           {item.name}
                         </span>
-                      </li>
+                      </motion.li>
                     );
                   })}
-                </ul>
+                </motion.ul>
               </motion.div>
               );
             })}
