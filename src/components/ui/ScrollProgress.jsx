@@ -16,8 +16,11 @@ import { motion, useScroll, useSpring, useReducedMotion } from "framer-motion";
    values are stiff and heavily damped, so it still feels attached to the
    scroll rather than lagging behind it.
 
-   Removed entirely under prefers-reduced-motion. It is an ambient indicator,
-   not information the page depends on, so there is nothing to degrade to.
+   Held at zero width under prefers-reduced-motion, so it is invisible. It is
+   an ambient indicator, not information the page depends on. It is still
+   rendered rather than returning null: the reduced-motion preference is
+   only known on the client, so returning null there while the server had
+   rendered the bar caused a hydration mismatch.
    ========================================================================== */
 
 export default function ScrollProgress() {
@@ -30,12 +33,10 @@ export default function ScrollProgress() {
     restDelta: 0.001,
   });
 
-  if (reduce) return null;
-
   return (
     <motion.div
       aria-hidden="true"
-      style={{ scaleX }}
+      style={{ scaleX: reduce ? 0 : scaleX }}
       /* origin-left so it grows from the start of the line rather than
          expanding from its centre. */
       className="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-left bg-accent"
