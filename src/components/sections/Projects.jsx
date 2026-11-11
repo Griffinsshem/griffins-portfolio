@@ -8,6 +8,7 @@ import { projects, work } from "@/config/portfolio";
 import { revealCard, settleImage, stagger } from "@/lib/motion";
 import RevealText from "@/components/ui/RevealText";
 import Magnetic from "@/components/ui/Magnetic";
+import ProjectLinks from "@/components/work/ProjectLinks";
 import { useSpotlight } from "@/hooks/useSpotlight";
 
 /* One cascade for the whole rail. Defined once at module scope so the
@@ -112,6 +113,8 @@ export default function Projects() {
                   <p className="text-[14px] leading-snug text-muted">{project.tagline}</p>
                 </div>
               </Link>
+              {/* Outside the Link: nested anchors are invalid. */}
+              <ProjectLinks project={project} from="home-rail" className="mt-4" />
             </motion.li>
           ))}
         </motion.ul>

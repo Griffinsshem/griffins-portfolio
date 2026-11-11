@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight, GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import { revealUp, revealImage, stagger, viewportOnce, reveal } from "@/lib/motion";
+import { trackEvent } from "@/lib/analytics";
 
 /* ==========================================================================
    CASE STUDY
@@ -83,10 +84,12 @@ export default function CaseStudy({ project, prev, next }) {
             <dt className="meta text-faint">Links</dt>
             <dd className="flex flex-col gap-1.5">
               <a href={project.live} target="_blank" rel="noopener noreferrer"
+                 onClick={() => trackEvent("project_link", { project: project.id, kind: "live", from: "case-study" })}
                  className="link inline-flex items-center gap-1.5 text-[15px] text-ink hover:text-accent">
                 Live site <ArrowUpRight size={13} weight="bold" aria-hidden="true" />
               </a>
               <a href={project.source} target="_blank" rel="noopener noreferrer"
+                 onClick={() => trackEvent("project_link", { project: project.id, kind: "source", from: "case-study" })}
                  className="link inline-flex items-center gap-1.5 text-[15px] text-muted hover:text-accent">
                 Source <GithubLogo size={13} weight="regular" aria-hidden="true" />
               </a>

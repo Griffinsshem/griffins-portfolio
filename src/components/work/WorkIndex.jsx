@@ -7,6 +7,7 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { projects, work } from "@/config/portfolio";
 import { revealUp, settleImage, stagger, viewportOnce } from "@/lib/motion";
 import RevealText from "@/components/ui/RevealText";
+import ProjectLinks from "@/components/work/ProjectLinks";
 import { useSpotlight } from "@/hooks/useSpotlight";
 
 /* ==========================================================================
@@ -52,7 +53,7 @@ export default function WorkIndex() {
             className="spotlight border-t border-line [--spot-bleed:1rem] last:border-b"
             onPointerMove={spotlight.onPointerMove}
           >
-            <Link href={`/work/${project.id}`} className="group grid-12 items-center gap-y-6 py-8 md:py-10">
+            <Link href={`/work/${project.id}`} className="group grid-12 items-center gap-y-6 pb-4 pt-8 md:pt-10">
               <div className="col-span-12 sm:col-span-5 md:col-span-4">
                 <div className="overflow-hidden bg-surface-raised">
                   <motion.div variants={settleImage}>
@@ -84,6 +85,16 @@ export default function WorkIndex() {
               </div>
 
             </Link>
+
+            {/* Below the row link, not inside it: nested anchors are
+                invalid. Starts in the same column as the text above. */}
+            <div className="grid-12 pb-8 md:pb-10">
+              <ProjectLinks
+                project={project}
+                from="work-index"
+                className="col-span-12 sm:col-span-7 sm:col-start-6 md:col-span-8 md:col-start-5"
+              />
+            </div>
           </motion.li>
         ))}
       </motion.ul>

@@ -6,6 +6,7 @@ import { personal, hero, index as heroIndex } from "@/config/portfolio";
 import { EASE, DUR, HERO_BEAT } from "@/lib/motion";
 import HeroSchematic from "@/components/ui/HeroSchematic";
 import Magnetic from "@/components/ui/Magnetic";
+import { trackEvent } from "@/lib/analytics";
 
 export default function HeroSection() {
   const reduce = useReducedMotion();
@@ -83,7 +84,12 @@ export default function HeroSection() {
           </Magnetic>
 
           <Magnetic>
-            <a href={personal.resume} download className="btn btn-ghost">
+            <a
+              href={personal.resume}
+              download
+              onClick={() => trackEvent("resume_download", { from: "hero" })}
+              className="btn btn-ghost"
+            >
               Resume
               <ArrowDown size={15} weight="bold" aria-hidden="true" />
             </a>
