@@ -13,6 +13,8 @@ const LINK_ICONS = { github: GithubLogo, linkedin: LinkedinLogo, x: XLogo };
 import { personal, contact, social } from "@/config/portfolio";
 import { revealUp, stagger, viewportOnce } from "@/lib/motion";
 import RevealText from "@/components/ui/RevealText";
+import ContactForm from "@/components/sections/ContactForm";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Contact() {
   const reduce = useReducedMotion();
@@ -56,6 +58,10 @@ export default function Contact() {
               </a>
             </motion.div>
 
+            <motion.div variants={revealUp} className="mt-14 md:mt-20">
+              <ContactForm />
+            </motion.div>
+
             <motion.ul variants={revealUp} className="mt-14 md:mt-20">
               {social
                 .filter((link) => link.id !== "email")
@@ -91,6 +97,7 @@ export default function Contact() {
                 <a
                   href={personal.resume}
                   download
+                  onClick={() => trackEvent("resume_download", { from: "contact" })}
                   className="group flex items-baseline justify-between gap-6 py-5 hover:text-accent"
                 >
                   <span className="flex items-center gap-3 font-display text-heading text-ink transition-colors duration-200 ease-[var(--ease-out)] group-hover:text-accent">
