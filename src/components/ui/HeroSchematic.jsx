@@ -1,6 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+
+/* ==========================================================================
+   PARALLAX DRIFT
+
+   As the page scrolls away from the hero, the schematic travels a little
+   slower than everything around it, so the hero reads as layered depth
+   rather than one flat sheet.
+
+   Three guards, each for a reason:
+   - Only at the lg breakpoint and up. There the schematic sits in its own
+     column beside the headline with clear space below it. On narrow screens
+     it is stacked above the lead paragraph, and any downward drift would
+     slide it over that text.
+   - The drift is capped at DRIFT_PX. The gap to the next row is 5rem, and
+     the travel has to stay well inside it so nothing ever touches.
+   - Not at all under prefers-reduced-motion. Scroll-linked movement is the
+     kind of motion that setting exists to remove.
+
+   Scroll position goes through motion values and a spring, so the movement
+   is smoothed and never re-renders React. It animates transform only.
+   ========================================================================== */
+
+const DRIFT_PX = 36;
+const DRIFT_RANGE = [0, 700];
+const DRIFT_SPRING = { stiffness: 120, damping: 24, mass: 0.4 };
 
 const LAYERS = [
   {
@@ -32,11 +58,30 @@ const LAYERS = [
 export default function HeroSchematic() {
   const [active, setActive] = useState(null);
 
+  const reduce = useReducedMotion();
+  const [wide, setWide] = useState(false);
+
+  /* Read after mount so the server and first client render agree (both
+     un-drifted); the breakpoint is then tracked live, including rotation
+     and window resizes. */
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setWide(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  const { scrollY } = useScroll();
+  const drift = useTransform(scrollY, DRIFT_RANGE, [0, DRIFT_PX]);
+  const y = useSpring(drift, DRIFT_SPRING);
+
   const activeLayer = LAYERS.find((layer) => layer.id === active);
 
   return (
-    <div
+    <motion.div
       className="w-full"
+      style={wide && !reduce ? { y } : undefined}
       onMouseLeave={() => setActive(null)}
     >
       <p className="meta mb-5">Request path</p>
@@ -107,6 +152,6 @@ export default function HeroSchematic() {
             : "The path a request takes through what I build."}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,13 +1,36 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { timeline } from "@/config/portfolio";
 import { revealUp, stagger, viewportOnce } from "@/lib/motion";
 import RevealText from "@/components/ui/RevealText";
 
 
+/* ==========================================================================
+   Scroll-linked timeline line. A hairline runs down the left of the list
+   and fills with the accent colour as the reader moves through it, so the
+   list reads as a path travelled rather than four separate rows.
+
+   The fill is scaleY on a full-height element with its origin at the top,
+   not an animated height, so it costs a transform and no layout. The
+   offsets start the fill when the list's top reaches 70% down the screen
+   and finish it when the list's bottom reaches 60%, which keeps the line
+   ahead of the reader's eye rather than trailing it.
+
+   Under prefers-reduced-motion the fill is held at zero; the track stays,
+   so the layout is identical and nothing moves.
+   ========================================================================== */
+
 export default function Experience() {
   const reduce = useReducedMotion();
+  const trackRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: trackRef,
+    offset: ["start 70%", "end 60%"],
+  });
+  const fill = useSpring(scrollYProgress, { stiffness: 140, damping: 26, mass: 0.3 });
 
   return (
     <section id="experience" aria-labelledby="experience-heading" className="shell section">
@@ -27,8 +50,18 @@ export default function Experience() {
             next one needed.
           </p>
 
+          <div ref={trackRef} className="relative mt-12 pl-6 md:mt-16 md:pl-10">
+          <span aria-hidden="true" className="absolute bottom-0 left-0 top-0 w-px bg-line" />
+          {/* Always rendered, so the server markup and the first client
+              render are the same element tree; reduced motion only pins
+              the fill at zero rather than removing it. */}
+          <motion.span
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 top-0 w-px origin-top bg-accent"
+            style={{ scaleY: reduce ? 0 : fill }}
+          />
+
           <motion.ol
-            className="mt-12 md:mt-16"
             variants={stagger(0.07)}
             initial={reduce ? false : "hidden"}
             whileInView="visible"
@@ -38,8 +71,13 @@ export default function Experience() {
               <motion.li
                 key={entry.id}
                 variants={revealUp}
-                className="grid-12 gap-y-3 border-t border-line py-8 md:py-10"
+                className="grid-12 relative gap-y-3 border-t border-line py-8 md:py-10"
               >
+                {/* Node on the line, level with this entry's top rule. */}
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-6 top-0 h-[7px] w-[7px] -translate-x-[3px] -translate-y-1/2 border border-line-strong bg-surface md:-left-10"
+                />
                 <div className="col-span-12 md:col-span-3">
                   {entry.period ? (
                     <p className="meta text-muted">{entry.period}</p>
@@ -76,6 +114,7 @@ export default function Experience() {
 
             <li className="border-t border-line" aria-hidden="true" />
           </motion.ol>
+          </div>
         </div>
       </div>
     </section>

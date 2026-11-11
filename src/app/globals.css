@@ -460,6 +460,26 @@
 }
 
 @layer components {
+  /* Route change. Opacity and a short rise. Fill mode is backwards, not
+     both: once the animation ends the element returns to its normal style
+     and has no transform at all. A lingering transform, even an identity
+     one, makes this wrapper the containing block for position: fixed
+     children and can interfere with position: sticky inside it. */
+  .page-enter {
+    animation: page-enter 450ms var(--ease-reveal) backwards;
+  }
+
+  @keyframes page-enter {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-enter { animation: none; }
+  }
+}
+
+@layer components {
   /* Cursor spotlight. A soft radial glow that follows the pointer inside an
      element, drawn by a pseudo-element so it adds no markup and costs one
      composited layer. useSpotlight() writes --mx / --my; everything else is
