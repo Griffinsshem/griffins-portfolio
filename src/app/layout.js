@@ -2,6 +2,8 @@ import { Bricolage_Grotesque, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next";
+import { personal, social, site } from "@/config/portfolio";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -48,14 +50,14 @@ export const metadata = {
     title: "Griffins Ondeyo - Frontend & Full-Stack Developer",
     description:
       "Frontend-focused developer in Nairobi building interfaces with React, Next.js, and Tailwind CSS.",
-    images: [{ url: "/griffins.jpg", width: 600, height: 600, alt: "Griffins Ondeyo" }],
+    /* No images field: the opengraph-image.js file in this folder supplies
+       the 1200x630 card, and an explicit field here would override it. */
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Griffins Ondeyo - Frontend & Full-Stack Developer",
     description:
       "Frontend-focused developer in Nairobi building interfaces with React, Next.js, and Tailwind CSS.",
-    images: ["/griffins.jpg"],
     creator: "@GriffinsShem",
   },
   robots: { index: true, follow: true },
@@ -67,6 +69,26 @@ export const viewport = {
     { media: "(prefers-color-scheme: dark)", color: "#121210" },
   ],
 };
+
+/* Structured data: tells search engines who the site is about, in the
+   vocabulary they read for the knowledge panel and rich results. Built from
+   the same config as the page so the two cannot disagree. sameAs lists the
+   profiles that are verifiably this person. The email is left out on
+   purpose; it is on the page for people, not for scrapers. */
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: personal.fullName,
+  jobTitle: personal.role,
+  url: site.url,
+  image: `${site.url}${personal.portrait}`,
+  address: { "@type": "PostalAddress", addressLocality: "Nairobi", addressCountry: "KE" },
+  knowsAbout: ["React", "Next.js", "Tailwind CSS", "Python", "Flask", "PostgreSQL"],
+  sameAs: social.filter((link) => link.id !== "email").map((link) => link.href),
+};
+
+/* "<" is escaped so no value in the config can close the script tag. */
+const personJsonLdString = JSON.stringify(personJsonLd).replace(/</g, "\\u003c");
 
 const themeBootstrap = `
 (function () {
@@ -96,9 +118,19 @@ export default function RootLayout({ children }) {
           Skip to main content
         </a>
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: personJsonLdString }}
+        />
+
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />
+
+        {/* Vercel Web Analytics: cookieless, so no consent banner is needed.
+            Reports nothing until Web Analytics is switched on for the
+            project in the Vercel dashboard. */}
+        <Analytics />
       </body>
     </html>
   );
